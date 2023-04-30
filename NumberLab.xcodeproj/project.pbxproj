@@ -1,0 +1,581 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		840DDBED29FE5E6D00EEFA98 /* NumberLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDBEC29FE5E6D00EEFA98 /* NumberLabApp.swift */; };
+		840DDBEF29FE5E6D00EEFA98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */; };
+		840DDBF129FE5E6E00EEFA98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840DDBF029FE5E6E00EEFA98 /* Assets.xcassets */; };
+		840DDBF429FE5E6E00EEFA98 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840DDBF329FE5E6E00EEFA98 /* Preview Assets.xcassets */; };
+		840DDBFF29FE5E6F00EEFA98 /* NumberLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDBFE29FE5E6F00EEFA98 /* NumberLabTests.swift */; };
+		840DDC0929FE5E6F00EEFA98 /* NumberLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDC0829FE5E6F00EEFA98 /* NumberLabUITests.swift */; };
+		840DDC0B29FE5E6F00EEFA98 /* NumberLabUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDC0A29FE5E6F00EEFA98 /* NumberLabUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		840DDBFB29FE5E6F00EEFA98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 840DDBE129FE5E6D00EEFA98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 840DDBE829FE5E6D00EEFA98;
+			remoteInfo = NumberLab;
+		};
+		840DDC0529FE5E6F00EEFA98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 840DDBE129FE5E6D00EEFA98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 840DDBE829FE5E6D00EEFA98;
+			remoteInfo = NumberLab;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		840DDBE929FE5E6D00EEFA98 /* NumberLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		840DDBEC29FE5E6D00EEFA98 /* NumberLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberLabApp.swift; sourceTree = "<group>"; };
+		840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		840DDBF029FE5E6E00EEFA98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		840DDBF329FE5E6E00EEFA98 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		840DDBF529FE5E6E00EEFA98 /* NumberLab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NumberLab.entitlements; sourceTree = "<group>"; };
+		840DDBFA29FE5E6F00EEFA98 /* NumberLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumberLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		840DDBFE29FE5E6F00EEFA98 /* NumberLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberLabTests.swift; sourceTree = "<group>"; };
+		840DDC0429FE5E6F00EEFA98 /* NumberLabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumberLabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		840DDC0829FE5E6F00EEFA98 /* NumberLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberLabUITests.swift; sourceTree = "<group>"; };
+		840DDC0A29FE5E6F00EEFA98 /* NumberLabUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberLabUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		840DDBE629FE5E6D00EEFA98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		840DDBF729FE5E6F00EEFA98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		840DDC0129FE5E6F00EEFA98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		840DDBE029FE5E6D00EEFA98 = {
+			isa = PBXGroup;
+			children = (
+				840DDBEB29FE5E6D00EEFA98 /* NumberLab */,
+				840DDBFD29FE5E6F00EEFA98 /* NumberLabTests */,
+				840DDC0729FE5E6F00EEFA98 /* NumberLabUITests */,
+				840DDBEA29FE5E6D00EEFA98 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		840DDBEA29FE5E6D00EEFA98 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				840DDBE929FE5E6D00EEFA98 /* NumberLab.app */,
+				840DDBFA29FE5E6F00EEFA98 /* NumberLabTests.xctest */,
+				840DDC0429FE5E6F00EEFA98 /* NumberLabUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		840DDBEB29FE5E6D00EEFA98 /* NumberLab */ = {
+			isa = PBXGroup;
+			children = (
+				840DDBEC29FE5E6D00EEFA98 /* NumberLabApp.swift */,
+				840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */,
+				840DDBF029FE5E6E00EEFA98 /* Assets.xcassets */,
+				840DDBF529FE5E6E00EEFA98 /* NumberLab.entitlements */,
+				840DDBF229FE5E6E00EEFA98 /* Preview Content */,
+			);
+			path = NumberLab;
+			sourceTree = "<group>";
+		};
+		840DDBF229FE5E6E00EEFA98 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				840DDBF329FE5E6E00EEFA98 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		840DDBFD29FE5E6F00EEFA98 /* NumberLabTests */ = {
+			isa = PBXGroup;
+			children = (
+				840DDBFE29FE5E6F00EEFA98 /* NumberLabTests.swift */,
+			);
+			path = NumberLabTests;
+			sourceTree = "<group>";
+		};
+		840DDC0729FE5E6F00EEFA98 /* NumberLabUITests */ = {
+			isa = PBXGroup;
+			children = (
+				840DDC0829FE5E6F00EEFA98 /* NumberLabUITests.swift */,
+				840DDC0A29FE5E6F00EEFA98 /* NumberLabUITestsLaunchTests.swift */,
+			);
+			path = NumberLabUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		840DDBE829FE5E6D00EEFA98 /* NumberLab */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 840DDC0E29FE5E6F00EEFA98 /* Build configuration list for PBXNativeTarget "NumberLab" */;
+			buildPhases = (
+				840DDBE529FE5E6D00EEFA98 /* Sources */,
+				840DDBE629FE5E6D00EEFA98 /* Frameworks */,
+				840DDBE729FE5E6D00EEFA98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NumberLab;
+			productName = NumberLab;
+			productReference = 840DDBE929FE5E6D00EEFA98 /* NumberLab.app */;
+			productType = "com.apple.product-type.application";
+		};
+		840DDBF929FE5E6F00EEFA98 /* NumberLabTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 840DDC1129FE5E6F00EEFA98 /* Build configuration list for PBXNativeTarget "NumberLabTests" */;
+			buildPhases = (
+				840DDBF629FE5E6F00EEFA98 /* Sources */,
+				840DDBF729FE5E6F00EEFA98 /* Frameworks */,
+				840DDBF829FE5E6F00EEFA98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				840DDBFC29FE5E6F00EEFA98 /* PBXTargetDependency */,
+			);
+			name = NumberLabTests;
+			productName = NumberLabTests;
+			productReference = 840DDBFA29FE5E6F00EEFA98 /* NumberLabTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		840DDC0329FE5E6F00EEFA98 /* NumberLabUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 840DDC1429FE5E6F00EEFA98 /* Build configuration list for PBXNativeTarget "NumberLabUITests" */;
+			buildPhases = (
+				840DDC0029FE5E6F00EEFA98 /* Sources */,
+				840DDC0129FE5E6F00EEFA98 /* Frameworks */,
+				840DDC0229FE5E6F00EEFA98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				840DDC0629FE5E6F00EEFA98 /* PBXTargetDependency */,
+			);
+			name = NumberLabUITests;
+			productName = NumberLabUITests;
+			productReference = 840DDC0429FE5E6F00EEFA98 /* NumberLabUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		840DDBE129FE5E6D00EEFA98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					840DDBE829FE5E6D00EEFA98 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					840DDBF929FE5E6F00EEFA98 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 840DDBE829FE5E6D00EEFA98;
+					};
+					840DDC0329FE5E6F00EEFA98 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 840DDBE829FE5E6D00EEFA98;
+					};
+				};
+			};
+			buildConfigurationList = 840DDBE429FE5E6D00EEFA98 /* Build configuration list for PBXProject "NumberLab" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 840DDBE029FE5E6D00EEFA98;
+			productRefGroup = 840DDBEA29FE5E6D00EEFA98 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				840DDBE829FE5E6D00EEFA98 /* NumberLab */,
+				840DDBF929FE5E6F00EEFA98 /* NumberLabTests */,
+				840DDC0329FE5E6F00EEFA98 /* NumberLabUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		840DDBE729FE5E6D00EEFA98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				840DDBF429FE5E6E00EEFA98 /* Preview Assets.xcassets in Resources */,
+				840DDBF129FE5E6E00EEFA98 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		840DDBF829FE5E6F00EEFA98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		840DDC0229FE5E6F00EEFA98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		840DDBE529FE5E6D00EEFA98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				840DDBEF29FE5E6D00EEFA98 /* ContentView.swift in Sources */,
+				840DDBED29FE5E6D00EEFA98 /* NumberLabApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		840DDBF629FE5E6F00EEFA98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				840DDBFF29FE5E6F00EEFA98 /* NumberLabTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		840DDC0029FE5E6F00EEFA98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				840DDC0929FE5E6F00EEFA98 /* NumberLabUITests.swift in Sources */,
+				840DDC0B29FE5E6F00EEFA98 /* NumberLabUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		840DDBFC29FE5E6F00EEFA98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 840DDBE829FE5E6D00EEFA98 /* NumberLab */;
+			targetProxy = 840DDBFB29FE5E6F00EEFA98 /* PBXContainerItemProxy */;
+		};
+		840DDC0629FE5E6F00EEFA98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 840DDBE829FE5E6D00EEFA98 /* NumberLab */;
+			targetProxy = 840DDC0529FE5E6F00EEFA98 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		840DDC0C29FE5E6F00EEFA98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		840DDC0D29FE5E6F00EEFA98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		840DDC0F29FE5E6F00EEFA98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NumberLab/NumberLab.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NumberLab/Preview Content\"";
+				DEVELOPMENT_TEAM = 9VDW95FV3X;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wesleyperkins.NumberLab;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		840DDC1029FE5E6F00EEFA98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NumberLab/NumberLab.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NumberLab/Preview Content\"";
+				DEVELOPMENT_TEAM = 9VDW95FV3X;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wesleyperkins.NumberLab;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		840DDC1229FE5E6F00EEFA98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9VDW95FV3X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wesleyperkins.NumberLabTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NumberLab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NumberLab";
+			};
+			name = Debug;
+		};
+		840DDC1329FE5E6F00EEFA98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9VDW95FV3X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wesleyperkins.NumberLabTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NumberLab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NumberLab";
+			};
+			name = Release;
+		};
+		840DDC1529FE5E6F00EEFA98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9VDW95FV3X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wesleyperkins.NumberLabUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = NumberLab;
+			};
+			name = Debug;
+		};
+		840DDC1629FE5E6F00EEFA98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9VDW95FV3X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wesleyperkins.NumberLabUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = NumberLab;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		840DDBE429FE5E6D00EEFA98 /* Build configuration list for PBXProject "NumberLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				840DDC0C29FE5E6F00EEFA98 /* Debug */,
+				840DDC0D29FE5E6F00EEFA98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		840DDC0E29FE5E6F00EEFA98 /* Build configuration list for PBXNativeTarget "NumberLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				840DDC0F29FE5E6F00EEFA98 /* Debug */,
+				840DDC1029FE5E6F00EEFA98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		840DDC1129FE5E6F00EEFA98 /* Build configuration list for PBXNativeTarget "NumberLabTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				840DDC1229FE5E6F00EEFA98 /* Debug */,
+				840DDC1329FE5E6F00EEFA98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		840DDC1429FE5E6F00EEFA98 /* Build configuration list for PBXNativeTarget "NumberLabUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				840DDC1529FE5E6F00EEFA98 /* Debug */,
+				840DDC1629FE5E6F00EEFA98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 840DDBE129FE5E6D00EEFA98 /* Project object */;
+}
