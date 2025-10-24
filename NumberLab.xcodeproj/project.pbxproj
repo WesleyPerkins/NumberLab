@@ -14,6 +14,19 @@
 		840DDBFF29FE5E6F00EEFA98 /* NumberLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDBFE29FE5E6F00EEFA98 /* NumberLabTests.swift */; };
 		840DDC0929FE5E6F00EEFA98 /* NumberLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDC0829FE5E6F00EEFA98 /* NumberLabUITests.swift */; };
 		840DDC0B29FE5E6F00EEFA98 /* NumberLabUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDC0A29FE5E6F00EEFA98 /* NumberLabUITestsLaunchTests.swift */; };
+		840DDC1B29FE79CB00EEFA98 /* HistogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDC1A29FE79CB00EEFA98 /* HistogramView.swift */; };
+		841090552EAB8FD100E8030F /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090492EAB8FD100E8030F /* Constraint.swift */; };
+		841090562EAB8FD100E8030F /* Sum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090532EAB8FD100E8030F /* Sum.swift */; };
+		841090572EAB8FD100E8030F /* Partition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090522EAB8FD100E8030F /* Partition.swift */; };
+		841090582EAB8FD100E8030F /* DebugUtl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410904A2EAB8FD100E8030F /* DebugUtl.swift */; };
+		841090592EAB8FD100E8030F /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410904C2EAB8FD100E8030F /* Function.swift */; };
+		8410905A2EAB8FD100E8030F /* NumberError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410904F2EAB8FD100E8030F /* NumberError.swift */; };
+		8410905B2EAB8FD100E8030F /* NumberTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090502EAB8FD100E8030F /* NumberTheory.swift */; };
+		8410905C2EAB8FD100E8030F /* Factor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410904B2EAB8FD100E8030F /* Factor.swift */; };
+		8410905D2EAB8FD100E8030F /* Odd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090512EAB8FD100E8030F /* Odd.swift */; };
+		8410905E2EAB8FD100E8030F /* Histogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410904D2EAB8FD100E8030F /* Histogram.swift */; };
+		8410905F2EAB8FD100E8030F /* N.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410904E2EAB8FD100E8030F /* N.swift */; };
+		841090602EAB8FD100E8030F /* BitChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090482EAB8FD100E8030F /* BitChain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +58,19 @@
 		840DDC0429FE5E6F00EEFA98 /* NumberLabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumberLabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		840DDC0829FE5E6F00EEFA98 /* NumberLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberLabUITests.swift; sourceTree = "<group>"; };
 		840DDC0A29FE5E6F00EEFA98 /* NumberLabUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberLabUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		840DDC1A29FE79CB00EEFA98 /* HistogramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistogramView.swift; sourceTree = "<group>"; };
+		841090482EAB8FD100E8030F /* BitChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitChain.swift; sourceTree = "<group>"; };
+		841090492EAB8FD100E8030F /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		8410904A2EAB8FD100E8030F /* DebugUtl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugUtl.swift; sourceTree = "<group>"; };
+		8410904B2EAB8FD100E8030F /* Factor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factor.swift; sourceTree = "<group>"; };
+		8410904C2EAB8FD100E8030F /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		8410904D2EAB8FD100E8030F /* Histogram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Histogram.swift; sourceTree = "<group>"; };
+		8410904E2EAB8FD100E8030F /* N.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = N.swift; sourceTree = "<group>"; };
+		8410904F2EAB8FD100E8030F /* NumberError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberError.swift; sourceTree = "<group>"; };
+		841090502EAB8FD100E8030F /* NumberTheory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTheory.swift; sourceTree = "<group>"; };
+		841090512EAB8FD100E8030F /* Odd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Odd.swift; sourceTree = "<group>"; };
+		841090522EAB8FD100E8030F /* Partition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partition.swift; sourceTree = "<group>"; };
+		841090532EAB8FD100E8030F /* Sum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +121,13 @@
 		840DDBEB29FE5E6D00EEFA98 /* NumberLab */ = {
 			isa = PBXGroup;
 			children = (
-				840DDBEC29FE5E6D00EEFA98 /* NumberLabApp.swift */,
-				840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */,
 				840DDBF029FE5E6E00EEFA98 /* Assets.xcassets */,
+				840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */,
 				840DDBF529FE5E6E00EEFA98 /* NumberLab.entitlements */,
+				840DDBEC29FE5E6D00EEFA98 /* NumberLabApp.swift */,
+				841090542EAB8FD100E8030F /* NumberTheory */,
 				840DDBF229FE5E6E00EEFA98 /* Preview Content */,
+				8428A4532EA7A4C6007D60F2 /* View */,
 			);
 			path = NumberLab;
 			sourceTree = "<group>";
@@ -129,6 +157,33 @@
 			path = NumberLabUITests;
 			sourceTree = "<group>";
 		};
+		841090542EAB8FD100E8030F /* NumberTheory */ = {
+			isa = PBXGroup;
+			children = (
+				841090482EAB8FD100E8030F /* BitChain.swift */,
+				841090492EAB8FD100E8030F /* Constraint.swift */,
+				8410904A2EAB8FD100E8030F /* DebugUtl.swift */,
+				8410904B2EAB8FD100E8030F /* Factor.swift */,
+				8410904C2EAB8FD100E8030F /* Function.swift */,
+				8410904D2EAB8FD100E8030F /* Histogram.swift */,
+				8410904E2EAB8FD100E8030F /* N.swift */,
+				8410904F2EAB8FD100E8030F /* NumberError.swift */,
+				841090502EAB8FD100E8030F /* NumberTheory.swift */,
+				841090512EAB8FD100E8030F /* Odd.swift */,
+				841090522EAB8FD100E8030F /* Partition.swift */,
+				841090532EAB8FD100E8030F /* Sum.swift */,
+			);
+			path = NumberTheory;
+			sourceTree = "<group>";
+		};
+		8428A4532EA7A4C6007D60F2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				840DDC1A29FE79CB00EEFA98 /* HistogramView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +200,8 @@
 			dependencies = (
 			);
 			name = NumberLab;
+			packageProductDependencies = (
+			);
 			productName = NumberLab;
 			productReference = 840DDBE929FE5E6D00EEFA98 /* NumberLab.app */;
 			productType = "com.apple.product-type.application";
@@ -193,7 +250,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					840DDBE829FE5E6D00EEFA98 = {
 						CreatedOnToolsVersion = 14.3;
@@ -217,6 +274,8 @@
 				Base,
 			);
 			mainGroup = 840DDBE029FE5E6D00EEFA98;
+			packageReferences = (
+			);
 			productRefGroup = 840DDBEA29FE5E6D00EEFA98 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -260,7 +319,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				840DDBEF29FE5E6D00EEFA98 /* ContentView.swift in Sources */,
+				841090552EAB8FD100E8030F /* Constraint.swift in Sources */,
+				841090562EAB8FD100E8030F /* Sum.swift in Sources */,
+				841090572EAB8FD100E8030F /* Partition.swift in Sources */,
+				841090582EAB8FD100E8030F /* DebugUtl.swift in Sources */,
+				841090592EAB8FD100E8030F /* Function.swift in Sources */,
+				8410905A2EAB8FD100E8030F /* NumberError.swift in Sources */,
+				8410905B2EAB8FD100E8030F /* NumberTheory.swift in Sources */,
+				8410905C2EAB8FD100E8030F /* Factor.swift in Sources */,
+				8410905D2EAB8FD100E8030F /* Odd.swift in Sources */,
+				8410905E2EAB8FD100E8030F /* Histogram.swift in Sources */,
+				8410905F2EAB8FD100E8030F /* N.swift in Sources */,
+				841090602EAB8FD100E8030F /* BitChain.swift in Sources */,
 				840DDBED29FE5E6D00EEFA98 /* NumberLabApp.swift in Sources */,
+				840DDC1B29FE79CB00EEFA98 /* HistogramView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,9 +402,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9VDW95FV3X;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -352,6 +427,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -390,9 +466,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9VDW95FV3X;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -405,6 +484,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -419,10 +499,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NumberLab/Preview Content\"";
-				DEVELOPMENT_TEAM = 9VDW95FV3X;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -446,10 +528,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NumberLab/Preview Content\"";
-				DEVELOPMENT_TEAM = 9VDW95FV3X;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -467,11 +551,10 @@
 		840DDC1229FE5E6F00EEFA98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9VDW95FV3X;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
@@ -486,11 +569,10 @@
 		840DDC1329FE5E6F00EEFA98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9VDW95FV3X;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
@@ -505,10 +587,9 @@
 		840DDC1529FE5E6F00EEFA98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9VDW95FV3X;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesleyperkins.NumberLabUITests;
@@ -522,10 +603,9 @@
 		840DDC1629FE5E6F00EEFA98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9VDW95FV3X;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesleyperkins.NumberLabUITests;
