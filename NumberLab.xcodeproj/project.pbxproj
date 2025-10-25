@@ -27,6 +27,12 @@
 		8410905E2EAB8FD100E8030F /* Histogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410904D2EAB8FD100E8030F /* Histogram.swift */; };
 		8410905F2EAB8FD100E8030F /* N.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410904E2EAB8FD100E8030F /* N.swift */; };
 		841090602EAB8FD100E8030F /* BitChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090482EAB8FD100E8030F /* BitChain.swift */; };
+		841374F22EABD4C900B7E26A /* CollatzMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841374F12EABD4C900B7E26A /* CollatzMap.swift */; };
+		845209C42EACA9BE00CF2DFE /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209C32EACA9BE00CF2DFE /* Stack.swift */; };
+		845209C62EACBCE800CF2DFE /* ChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209C52EACBCE800CF2DFE /* ChainView.swift */; };
+		845209C82EACC71600CF2DFE /* TimeProfiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209C72EACC71600CF2DFE /* TimeProfiler.swift */; };
+		845209CC2EACD22200CF2DFE /* GeometryUtl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209CB2EACD22200CF2DFE /* GeometryUtl.swift */; };
+		845209CE2EACD36C00CF2DFE /* CgUtl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209CD2EACD36C00CF2DFE /* CgUtl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,12 @@
 		841090512EAB8FD100E8030F /* Odd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Odd.swift; sourceTree = "<group>"; };
 		841090522EAB8FD100E8030F /* Partition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partition.swift; sourceTree = "<group>"; };
 		841090532EAB8FD100E8030F /* Sum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sum.swift; sourceTree = "<group>"; };
+		841374F12EABD4C900B7E26A /* CollatzMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollatzMap.swift; sourceTree = "<group>"; };
+		845209C32EACA9BE00CF2DFE /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		845209C52EACBCE800CF2DFE /* ChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainView.swift; sourceTree = "<group>"; };
+		845209C72EACC71600CF2DFE /* TimeProfiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeProfiler.swift; sourceTree = "<group>"; };
+		845209CB2EACD22200CF2DFE /* GeometryUtl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryUtl.swift; sourceTree = "<group>"; };
+		845209CD2EACD36C00CF2DFE /* CgUtl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CgUtl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +133,8 @@
 		840DDBEB29FE5E6D00EEFA98 /* NumberLab */ = {
 			isa = PBXGroup;
 			children = (
+				845209C22EACA9A900CF2DFE /* Utl */,
 				840DDBF029FE5E6E00EEFA98 /* Assets.xcassets */,
-				840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */,
 				840DDBF529FE5E6E00EEFA98 /* NumberLab.entitlements */,
 				840DDBEC29FE5E6D00EEFA98 /* NumberLabApp.swift */,
 				841090542EAB8FD100E8030F /* NumberTheory */,
@@ -161,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				841090482EAB8FD100E8030F /* BitChain.swift */,
+				841374F12EABD4C900B7E26A /* CollatzMap.swift */,
 				841090492EAB8FD100E8030F /* Constraint.swift */,
 				8410904A2EAB8FD100E8030F /* DebugUtl.swift */,
 				8410904B2EAB8FD100E8030F /* Factor.swift */,
@@ -180,8 +193,21 @@
 			isa = PBXGroup;
 			children = (
 				840DDC1A29FE79CB00EEFA98 /* HistogramView.swift */,
+				840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */,
+				845209C52EACBCE800CF2DFE /* ChainView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		845209C22EACA9A900CF2DFE /* Utl */ = {
+			isa = PBXGroup;
+			children = (
+				845209CD2EACD36C00CF2DFE /* CgUtl.swift */,
+				845209CB2EACD22200CF2DFE /* GeometryUtl.swift */,
+				845209C32EACA9BE00CF2DFE /* Stack.swift */,
+				845209C72EACC71600CF2DFE /* TimeProfiler.swift */,
+			);
+			path = Utl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,13 +344,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845209C62EACBCE800CF2DFE /* ChainView.swift in Sources */,
+				845209CC2EACD22200CF2DFE /* GeometryUtl.swift in Sources */,
 				840DDBEF29FE5E6D00EEFA98 /* ContentView.swift in Sources */,
 				841090552EAB8FD100E8030F /* Constraint.swift in Sources */,
+				841374F22EABD4C900B7E26A /* CollatzMap.swift in Sources */,
+				845209C42EACA9BE00CF2DFE /* Stack.swift in Sources */,
 				841090562EAB8FD100E8030F /* Sum.swift in Sources */,
 				841090572EAB8FD100E8030F /* Partition.swift in Sources */,
 				841090582EAB8FD100E8030F /* DebugUtl.swift in Sources */,
 				841090592EAB8FD100E8030F /* Function.swift in Sources */,
 				8410905A2EAB8FD100E8030F /* NumberError.swift in Sources */,
+				845209C82EACC71600CF2DFE /* TimeProfiler.swift in Sources */,
 				8410905B2EAB8FD100E8030F /* NumberTheory.swift in Sources */,
 				8410905C2EAB8FD100E8030F /* Factor.swift in Sources */,
 				8410905D2EAB8FD100E8030F /* Odd.swift in Sources */,
@@ -333,6 +364,7 @@
 				841090602EAB8FD100E8030F /* BitChain.swift in Sources */,
 				840DDBED29FE5E6D00EEFA98 /* NumberLabApp.swift in Sources */,
 				840DDC1B29FE79CB00EEFA98 /* HistogramView.swift in Sources */,
+				845209CE2EACD36C00CF2DFE /* CgUtl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,15 @@ public class Odd: N {
         }
     }
     
+    public convenience init(ordinal: Int) throws {
+        if ordinal < 0 { throw NumberError.notOrdinal }
+        do {
+            try self.init(n: 2*ordinal + 1)
+        } catch {
+            throw error
+        }
+    }
+    
     // create random Odd of length nbit
     public override init(nbit: Int) throws {
         do { try super.init(nbit: nbit) } catch { throw error }
@@ -26,8 +35,24 @@ public class Odd: N {
         }
     }
     
+    override func copy() -> Odd {
+        try! Odd(bitChain: g.copy())
+    }
+    
+    public func collatzChain() -> [Odd] {
+        var result: [Odd] = [self]
+
+        while result.last! != Odd.one {
+            let next:Odd = result.last!.copy()
+            next.collatz()
+            result.append(next)
+        }
+        return result
+    }
+    
     // Perform an in-place collatz: add n to a shifted version of n to get 3*n
     // Starting with a carry bit of 1 thus gives us 3*n + 1
+    // Removing initial 0's gives us an Odd result
     public func collatz() {
         var carry: Bool = true
         var current: BitLink? = g.first

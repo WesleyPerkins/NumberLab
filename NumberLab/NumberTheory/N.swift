@@ -3,6 +3,7 @@ import Foundation
 // can represent any natural number (0 is not included)
 public class N: Hashable, CustomStringConvertible {
     let g: BitChain
+    static let zero: N = try! N(n: 0)
     
     public init(n: Int) throws {
         if n < 1 { throw NumberError.notNaturalNumber }
@@ -17,6 +18,11 @@ public class N: Hashable, CustomStringConvertible {
         }
         g = bitChain!
         assert(isValid())
+    }
+    
+    public convenience init(ordinal: Int) throws {
+        if ordinal < 0 { throw NumberError.notOrdinal }
+        try self.init(n: ordinal + 1)
     }
     
     // create random N of length nbit
@@ -35,6 +41,10 @@ public class N: Hashable, CustomStringConvertible {
         self.g = bitChain.copy()
         try self.g.shave()
         assert(isValid())
+    }
+    
+    func copy() -> N {
+        try! N(bitChain: g.copy())
     }
     
     deinit { BitLink.freeAll(bitchain: g) }
@@ -61,8 +71,7 @@ public class N: Hashable, CustomStringConvertible {
         }
     }
     
-    func copy() -> N { try! N(bitChain: g.copy()) }
-    static func one() -> N { try! N(n: 1) }
+    static let one: Odd = try! Odd(n: 1)
     
     public var description: String {
         var result: String = ""
