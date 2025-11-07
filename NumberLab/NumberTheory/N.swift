@@ -72,7 +72,8 @@ public class N: Hashable, CustomStringConvertible {
     }
     
     static let one: Odd = try! Odd(n: 1)
-    
+    static let two: N = try! N(n: 2)
+
     public var description: String {
         var result: String = ""
         var link: BitLink? = g.first
@@ -86,7 +87,7 @@ public class N: Hashable, CustomStringConvertible {
     func nbit() -> Int { assert(isValid()); return g.count }
     func isValid() -> Bool { (!g.isEmpty()) && g.last.value }
     func isOne() -> Bool { (g.count == 1) && g.last.value }
-
+    
     // add initial zeroes (multiplies by pow(2,nshift))
     func shiftMore(_ nshift: Int) {
         assert( nshift >= 0 )
@@ -94,7 +95,7 @@ public class N: Hashable, CustomStringConvertible {
             g.prepend(value: false)
         }
     }
-
+    
     // try to remove initial bits (divides by pow(2,nshift))
     func shiftLess(_ nshift: Int) throws {
         assert( (nshift >= 0) && (nshift < self.nbit()) )
@@ -102,7 +103,7 @@ public class N: Hashable, CustomStringConvertible {
             try g.removeFirst()
         }
     }
-
+    
     // return -1, 0, +1 according to whether self is less than other, equal to other, greater than other
     func compareTo(_ other: N) -> Int {
         assert(isValid() && other.isValid())
@@ -129,7 +130,7 @@ public class N: Hashable, CustomStringConvertible {
     public static func == (lhs: N, rhs: N) -> Bool { compare(lhs, rhs) == 0 }
     public static func >= (lhs: N, rhs: N) -> Bool { compare(lhs, rhs) >= 0 }
     public static func > (lhs: N, rhs: N) -> Bool { compare(lhs, rhs) > 0 }
-
+    
     // Overloading the '+=' operator
     static func +=(lhs: inout N, rhs: N) { lhs = lhs + rhs }
     // Overloading the '+' operator
@@ -169,11 +170,11 @@ public class N: Hashable, CustomStringConvertible {
             }
             lhsShift.shiftMore(1)
             rBitlink = rBitlink!.next
-//            print("lhsShift: \(try? lhsShift.asInt()) sum: \(try? sum?.asInt())")
+            //            print("lhsShift: \(try? lhsShift.asInt()) sum: \(try? sum?.asInt())")
         }
         return sum!
     }
-        
+    
     // Overloading the '-=' operator
     static func -=(lhs: inout N, rhs: N) { lhs = lhs - rhs }
     // Overloading the '-' operator
@@ -214,7 +215,7 @@ public class N: Hashable, CustomStringConvertible {
             return b ? ( true, true ) : ( false, false )
         }
     }
-
+    
     static func halfAdd(_ a: Bool, _ b: Bool, _ carry: Bool) -> (sum: Bool, carry: Bool) {
         if carry {
             return ( (a == b), a || b)
@@ -222,7 +223,7 @@ public class N: Hashable, CustomStringConvertible {
             return ( (a != b), a && b)
         }
     }
-
+    
     func asInt() throws -> Int {
         var result: Int = 0
         var power: Int = 1
@@ -253,7 +254,7 @@ public class N: Hashable, CustomStringConvertible {
         // if we've run out of data we append a 1
         g.append(value: true)
     }
-
+    
     // decrement in-place
     func dec() throws {
         var bitLink: BitLink? = g.first
@@ -271,7 +272,7 @@ public class N: Hashable, CustomStringConvertible {
         }
         throw NumberError.notNaturalNumber
     }
-
+    
     // remove any powers of 2 in-place
     func sans2() throws {
         var bit: BitLink? = g.first
@@ -285,26 +286,52 @@ public class N: Hashable, CustomStringConvertible {
         }
     }
     
-//    func quotientAndRemainder(dividingBy: N) -> (N0,N0) {
-//        if dividingBy > self {
-//            return (.zero, .n(dividingBy))
-//        } else if dividingBy == self {
-//            return (try! .n(N(n: 1)), .zero)
-//        } else {
-//            var maxShift = self.nbit() - dividingBy.nbit()
-//            // find the largest power of two that when multiplied by the divisor is <= the dividend
-//            for shift in stride(from: maxShift, through: 0, by: -1) {
-//                let diff: N? = subtract(nshifted: (dividingBy, shift))
-//            }
-//            
-//        }
-//    }
+    //  A binary number is divisible by 3 if and only if the alternating sum of its bits
+    //  (starting with +1 on the least significant bit) is divisible by 3.
+    public func isTriple() -> Bool {
+        var polar = 1
+        var sum = 0
+        var curr: BitLink? = g.first
+        while curr != nil {
+            if curr!.value {
+                sum += polar
+            }
+            polar = -polar
+            curr = curr!.next
+        }
+        return sum % 3 == 0
+    }
+    
+    func divideBy3() throws -> (quotient: N0, remainder: Int) {
+        switch self {
+            case .one: return (.zero, 1)
+            case .two: return (.zero, 2)
+            default: do {
+                var remainder: Int = 0
+                var curr: BitLink? = g.last
+                var quotientReversed: BitChain? = nil
+                while curr != nil {
+                    let x = remainder * 2 + (curr!.value ? 1 : 0)
+                    let qBit = x / 3
+                    remainder = x % 3
+                    if quotientReversed == nil {
+                        quotientReversed = BitChain(value: qBit == 1)
+                    } else {
+                        quotientReversed!.append(value: qBit == 1)
+                    }
+                    curr = curr!.prev
+                }
+                let quotient = try N(bitChain: quotientReversed!.reverse())
+                return (.n(n: quotient), remainder)
+            }
+        }
+    }
 }
 
 // can represent any natural number or 0
 enum N0 {
     case n (n: N)
-    case zer0
+    case zero
 }
 
 // can represent any natural number (0 is not included)
@@ -349,5 +376,4 @@ public class MixedRadix: CustomStringConvertible {
         }
         return result
     }
-    
 }

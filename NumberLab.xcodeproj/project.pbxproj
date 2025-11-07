@@ -28,6 +28,7 @@
 		8410905F2EAB8FD100E8030F /* N.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410904E2EAB8FD100E8030F /* N.swift */; };
 		841090602EAB8FD100E8030F /* BitChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090482EAB8FD100E8030F /* BitChain.swift */; };
 		841374F22EABD4C900B7E26A /* CollatzMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841374F12EABD4C900B7E26A /* CollatzMap.swift */; };
+		8433D2372EADE2040077E3CB /* BitStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433D2362EADE2040077E3CB /* BitStringView.swift */; };
 		845209C42EACA9BE00CF2DFE /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209C32EACA9BE00CF2DFE /* Stack.swift */; };
 		845209C62EACBCE800CF2DFE /* ChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209C52EACBCE800CF2DFE /* ChainView.swift */; };
 		845209C82EACC71600CF2DFE /* TimeProfiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209C72EACC71600CF2DFE /* TimeProfiler.swift */; };
@@ -78,6 +79,7 @@
 		841090522EAB8FD100E8030F /* Partition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partition.swift; sourceTree = "<group>"; };
 		841090532EAB8FD100E8030F /* Sum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sum.swift; sourceTree = "<group>"; };
 		841374F12EABD4C900B7E26A /* CollatzMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollatzMap.swift; sourceTree = "<group>"; };
+		8433D2362EADE2040077E3CB /* BitStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitStringView.swift; sourceTree = "<group>"; };
 		845209C32EACA9BE00CF2DFE /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		845209C52EACBCE800CF2DFE /* ChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainView.swift; sourceTree = "<group>"; };
 		845209C72EACC71600CF2DFE /* TimeProfiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeProfiler.swift; sourceTree = "<group>"; };
@@ -192,9 +194,10 @@
 		8428A4532EA7A4C6007D60F2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				840DDC1A29FE79CB00EEFA98 /* HistogramView.swift */,
-				840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */,
+				8433D2362EADE2040077E3CB /* BitStringView.swift */,
 				845209C52EACBCE800CF2DFE /* ChainView.swift */,
+				840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */,
+				840DDC1A29FE79CB00EEFA98 /* HistogramView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				845209C62EACBCE800CF2DFE /* ChainView.swift in Sources */,
+				8433D2372EADE2040077E3CB /* BitStringView.swift in Sources */,
 				845209CC2EACD22200CF2DFE /* GeometryUtl.swift in Sources */,
 				840DDBEF29FE5E6D00EEFA98 /* ContentView.swift in Sources */,
 				841090552EAB8FD100E8030F /* Constraint.swift in Sources */,

@@ -20,7 +20,6 @@ struct HistogramView: View {
                     let maxX: Double = histogram.getBinCenters().last ?? 0
                     
                     // Calculate responsive dimensions
-                    let availableWidth = geometry.size.width - 100 // Reserve space for padding and y-axis
                     let availableHeight = geometry.size.height - 150 // Reserve space for labels and axes
                     let chartHeight = max(150, availableHeight * 0.95) // At least 150px, or 60% of available height
                     

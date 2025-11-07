@@ -41,7 +41,6 @@ public class Odd: N {
     
     public func collatzChain() -> [Odd] {
         var result: [Odd] = [self]
-
         while result.last! != Odd.one {
             let next:Odd = result.last!.copy()
             next.collatz()

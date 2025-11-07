@@ -27,6 +27,22 @@ class BitChain {
         return result!
     }
     
+    // reverse
+    func reverse() throws -> BitChain {
+        var result: BitChain? = nil
+        var bitLink: BitLink? = self.last
+        while bitLink != nil {
+            if result == nil {
+                result = BitChain(value: bitLink!.value)
+            } else {
+                result!.append(value: bitLink!.value)
+            }
+            bitLink = bitLink!.prev
+        }
+        try result!.shave()
+        return result!
+    }
+    
     // if all bits are 0, it is empty
     func isEmpty() -> Bool {
         var bit: BitLink? = self.first

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     let sidebarItems: [SidebarItem] = [
+        SidebarItem(title: "Bit Strings"),
         SidebarItem(title: "Collatz Chains", nchain: 32),
         SidebarItem(title: "Collatz Histogram 30 bit", nbit: 30),
         SidebarItem(title: "Collatz Histogram 100 bit", nbit: 100),
@@ -11,7 +12,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(sidebarItems) { item in
-                if item.title.starts(with: "Collatz Chains") {
+                if item.title.starts(with: "Bit Strings") {
+                    NavigationLink(destination: BitStringView()) {
+                        Text(item.title)
+                    }
+                } else if item.title.starts(with: "Collatz Chains") {
                     let nchain = item.nchain!
                     NavigationLink(destination: ChainView(nchain: nchain)) {
                         Text(item.title)
