@@ -87,6 +87,40 @@ public class N: Hashable, CustomStringConvertible {
     func nbit() -> Int { assert(isValid()); return g.count }
     func isValid() -> Bool { (!g.isEmpty()) && g.last.value }
     func isOne() -> Bool { (g.count == 1) && g.last.value }
+    func isOdd() -> Bool { g.first.value }
+
+    func halve() -> N0 {
+        if isOne() { return .zero }
+        let c = copy()
+        try! c.shiftLess(1)
+        assert(c.isValid())
+        return .n(n: c)
+    }
+
+    public static func gcd(_ uIn: N, _ vIn: N) -> N {
+        var u = uIn.copy()
+        var v = vIn.copy()
+        var shift = 0
+
+        while !u.isOdd() && !v.isOdd() {
+            guard case .n(let hu) = u.halve(), case .n(let hv) = v.halve() else { break }
+            u = hu; v = hv; shift += 1
+        }
+        while !u.isOdd() {
+            if case .n(let hu) = u.halve() { u = hu }
+        }
+        repeat {
+            while !v.isOdd() {
+                if case .n(let hv) = v.halve() { v = hv }
+            }
+            if u > v { swap(&u, &v) }
+            if u == v { break }
+            v = v - u
+        } while true
+
+        u.shiftMore(shift)
+        return u
+    }
     
     // add initial zeroes (multiplies by pow(2,nshift))
     func shiftMore(_ nshift: Int) {
@@ -302,6 +336,47 @@ public class N: Hashable, CustomStringConvertible {
         return sum % 3 == 0
     }
     
+    // Binary long-division: returns (quotient, remainder) such that self = quotient * divisor + remainder.
+    func divide(by divisor: N) -> (quotient: N0, remainder: N0) {
+        assert(isValid() && divisor.isValid())
+        let cmp = compareTo(divisor)
+        if cmp < 0  { return (.zero, .n(n: copy())) }
+        if cmp == 0 { return (.n(n: N.one.copy()), .zero) }
+
+        var remainder: N0 = .zero
+        var quotientReversed: BitChain? = nil
+        var curr: BitLink? = g.last   // iterate MSB → LSB
+
+        while curr != nil {
+            let bit = curr!.value
+            switch remainder {
+            case .zero:
+                if bit { remainder = .n(n: N.one.copy()) }
+            case .n(let r):
+                r.shiftMore(1)
+                if bit { r.inc() }
+            }
+
+            var qBit = false
+            if case .n(let r) = remainder {
+                let c = r.compareTo(divisor)
+                if c >= 0 {
+                    qBit    = true
+                    remainder = c == 0 ? .zero : .n(n: r - divisor)
+                }
+            }
+
+            if quotientReversed == nil { quotientReversed = BitChain(value: qBit) }
+            else                        { quotientReversed!.append(value: qBit) }
+            curr = curr!.prev
+        }
+
+        guard let qr = quotientReversed,
+              let rev = try? qr.reverse(),
+              let q   = try? N(bitChain: rev) else { return (.zero, remainder) }
+        return (.n(n: q), remainder)
+    }
+
     func divideBy3() throws -> (quotient: N0, remainder: Int) {
         switch self {
             case .one: return (.zero, 1)
