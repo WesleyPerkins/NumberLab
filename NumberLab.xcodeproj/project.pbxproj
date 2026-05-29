@@ -27,13 +27,14 @@
 		8410905E2EAB8FD100E8030F /* Histogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410904D2EAB8FD100E8030F /* Histogram.swift */; };
 		8410905F2EAB8FD100E8030F /* N.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410904E2EAB8FD100E8030F /* N.swift */; };
 		841090602EAB8FD100E8030F /* BitChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090482EAB8FD100E8030F /* BitChain.swift */; };
-		841374F22EABD4C900B7E26A /* CollatzMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841374F12EABD4C900B7E26A /* CollatzMap.swift */; };
+		841374F22EABD4C900B7E26A /* CollatzGraphNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841374F12EABD4C900B7E26A /* CollatzGraphNode.swift */; };
 		8433D2372EADE2040077E3CB /* BitStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433D2362EADE2040077E3CB /* BitStringView.swift */; };
 		845209C42EACA9BE00CF2DFE /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209C32EACA9BE00CF2DFE /* Stack.swift */; };
 		845209C62EACBCE800CF2DFE /* ChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209C52EACBCE800CF2DFE /* ChainView.swift */; };
 		845209C82EACC71600CF2DFE /* TimeProfiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209C72EACC71600CF2DFE /* TimeProfiler.swift */; };
 		845209CC2EACD22200CF2DFE /* GeometryUtl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209CB2EACD22200CF2DFE /* GeometryUtl.swift */; };
 		845209CE2EACD36C00CF2DFE /* CgUtl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845209CD2EACD36C00CF2DFE /* CgUtl.swift */; };
+		846C624F2FC6CF5600DC3409 /* CollatzGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C624E2FC6CF5600DC3409 /* CollatzGraphView.swift */; };
 		84ED8DBF2FB9DBA6004039DB /* I.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED8DBE2FB9DBA6004039DB /* I.swift */; };
 		84ED8DC02FB9DBA6004039DB /* I.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED8DBE2FB9DBA6004039DB /* I.swift */; };
 		84ED8DC12FB9DBA6004039DB /* I.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED8DBE2FB9DBA6004039DB /* I.swift */; };
@@ -84,13 +85,14 @@
 		841090512EAB8FD100E8030F /* Odd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Odd.swift; sourceTree = "<group>"; };
 		841090522EAB8FD100E8030F /* Partition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partition.swift; sourceTree = "<group>"; };
 		841090532EAB8FD100E8030F /* Sum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sum.swift; sourceTree = "<group>"; };
-		841374F12EABD4C900B7E26A /* CollatzMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollatzMap.swift; sourceTree = "<group>"; };
+		841374F12EABD4C900B7E26A /* CollatzGraphNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollatzGraphNode.swift; sourceTree = "<group>"; };
 		8433D2362EADE2040077E3CB /* BitStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitStringView.swift; sourceTree = "<group>"; };
 		845209C32EACA9BE00CF2DFE /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		845209C52EACBCE800CF2DFE /* ChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainView.swift; sourceTree = "<group>"; };
 		845209C72EACC71600CF2DFE /* TimeProfiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeProfiler.swift; sourceTree = "<group>"; };
 		845209CB2EACD22200CF2DFE /* GeometryUtl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryUtl.swift; sourceTree = "<group>"; };
 		845209CD2EACD36C00CF2DFE /* CgUtl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CgUtl.swift; sourceTree = "<group>"; };
+		846C624E2FC6CF5600DC3409 /* CollatzGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollatzGraphView.swift; sourceTree = "<group>"; };
 		84ED8DBE2FB9DBA6004039DB /* I.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.swift; sourceTree = "<group>"; };
 		84ED8DC22FB9E0B2004039DB /* Q.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Q.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,7 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				841090482EAB8FD100E8030F /* BitChain.swift */,
-				841374F12EABD4C900B7E26A /* CollatzMap.swift */,
+				841374F12EABD4C900B7E26A /* CollatzGraphNode.swift */,
 				841090492EAB8FD100E8030F /* Constraint.swift */,
 				8410904A2EAB8FD100E8030F /* DebugUtl.swift */,
 				8410904B2EAB8FD100E8030F /* Factor.swift */,
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				8433D2362EADE2040077E3CB /* BitStringView.swift */,
+				846C624E2FC6CF5600DC3409 /* CollatzGraphView.swift */,
 				845209C52EACBCE800CF2DFE /* ChainView.swift */,
 				840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */,
 				840DDC1A29FE79CB00EEFA98 /* HistogramView.swift */,
@@ -364,7 +367,7 @@
 				845209CC2EACD22200CF2DFE /* GeometryUtl.swift in Sources */,
 				840DDBEF29FE5E6D00EEFA98 /* ContentView.swift in Sources */,
 				841090552EAB8FD100E8030F /* Constraint.swift in Sources */,
-				841374F22EABD4C900B7E26A /* CollatzMap.swift in Sources */,
+				841374F22EABD4C900B7E26A /* CollatzGraphNode.swift in Sources */,
 				845209C42EACA9BE00CF2DFE /* Stack.swift in Sources */,
 				841090562EAB8FD100E8030F /* Sum.swift in Sources */,
 				841090572EAB8FD100E8030F /* Partition.swift in Sources */,
@@ -380,6 +383,7 @@
 				841090602EAB8FD100E8030F /* BitChain.swift in Sources */,
 				840DDBED29FE5E6D00EEFA98 /* NumberLabApp.swift in Sources */,
 				840DDC1B29FE79CB00EEFA98 /* HistogramView.swift in Sources */,
+				846C624F2FC6CF5600DC3409 /* CollatzGraphView.swift in Sources */,
 				845209CE2EACD36C00CF2DFE /* CgUtl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,10 +557,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NumberLab/Preview Content\"";
-				ENABLE_APP_SANDBOX = YES;
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -582,10 +585,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NumberLab/Preview Content\"";
-				ENABLE_APP_SANDBOX = YES;
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

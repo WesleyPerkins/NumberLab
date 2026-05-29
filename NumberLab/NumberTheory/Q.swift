@@ -71,6 +71,20 @@ public class Q: Hashable, Comparable, CustomStringConvertible {
     public static func >= (lhs: Q, rhs: Q) -> Bool { compare(lhs, rhs) >= 0 }
     public static func >  (lhs: Q, rhs: Q) -> Bool { compare(lhs, rhs) >  0 }
 
+    // MARK: - Predicates
+
+    // Q's canonical form guarantees gcd(|numerator|, denominator) = 1,
+    // so the fraction is whole iff denominator == 1.
+    public func isN() -> Bool {
+        guard !numerator.negative, case .n(_) = numerator.magnitude else { return false }
+        return denominator.isOne()
+    }
+
+    public func asN() -> N? {
+        guard isN(), case .n(let n) = numerator.magnitude else { return nil }
+        return n.copy()
+    }
+
     // MARK: - Negation
 
     public static prefix func - (operand: Q) -> Q {

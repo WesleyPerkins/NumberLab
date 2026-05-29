@@ -4,6 +4,8 @@ struct ContentView: View {
     let sidebarItems: [SidebarItem] = [
         SidebarItem(title: "Bit Strings"),
         SidebarItem(title: "Collatz Chains", nchain: 32),
+        SidebarItem(title: "Collatz Graph 16 bit", nbit: 16),
+        SidebarItem(title: "Collatz Graph 20 bit", nbit: 20),
         SidebarItem(title: "Collatz Histogram 30 bit", nbit: 30),
         SidebarItem(title: "Collatz Histogram 100 bit", nbit: 100),
         SidebarItem(title: "Collatz Histogram 200 bit", nbit: 200),
@@ -19,6 +21,11 @@ struct ContentView: View {
                 } else if item.title.starts(with: "Collatz Chains") {
                     let nchain = item.nchain!
                     NavigationLink(destination: ChainView(nchain: nchain)) {
+                        Text(item.title)
+                    }
+                } else if item.title.starts(with: "Collatz Graph") {
+                    let nchain = 1 << item.nbit!
+                    NavigationLink(destination: CollatzGraphView(nchain: nchain)) {
                         Text(item.title)
                     }
                 } else if item.title.starts(with: "Collatz Histogram") {

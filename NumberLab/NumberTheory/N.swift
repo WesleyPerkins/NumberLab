@@ -43,6 +43,10 @@ public class N: Hashable, CustomStringConvertible {
         assert(isValid())
     }
     
+    public var description: String {
+        return "\(asInt())"
+    }
+    
     func copy() -> N {
         try! N(bitChain: g.copy())
     }
@@ -74,7 +78,7 @@ public class N: Hashable, CustomStringConvertible {
     static let one: Odd = try! Odd(n: 1)
     static let two: N = try! N(n: 2)
 
-    public var description: String {
+    public var asBits: String {
         var result: String = ""
         var link: BitLink? = g.first
         while link != nil {
@@ -204,7 +208,6 @@ public class N: Hashable, CustomStringConvertible {
             }
             lhsShift.shiftMore(1)
             rBitlink = rBitlink!.next
-            //            print("lhsShift: \(try? lhsShift.asInt()) sum: \(try? sum?.asInt())")
         }
         return sum!
     }
@@ -258,7 +261,7 @@ public class N: Hashable, CustomStringConvertible {
         }
     }
     
-    func asInt() throws -> Int {
+    func asInt() -> Int {
         var result: Int = 0
         var power: Int = 1
         var bit: BitLink? = g.first

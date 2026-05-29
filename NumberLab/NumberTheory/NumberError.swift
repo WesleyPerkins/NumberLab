@@ -6,4 +6,5 @@ enum NumberError: Error {
     case notOrdinal
     case overflow
     case emptyChain
+    case collatzGraphError
 }

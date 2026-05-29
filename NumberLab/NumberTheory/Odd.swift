@@ -42,8 +42,7 @@ public class Odd: N {
     public func collatzChain() -> [Odd] {
         var result: [Odd] = [self]
         while result.last! != Odd.one {
-            let next:Odd = result.last!.copy()
-            next.collatz()
+            let next:Odd = result.last!.collatzed()
             result.append(next)
         }
         return result
@@ -51,7 +50,7 @@ public class Odd: N {
     
     // Perform an in-place collatz: add n to a shifted version of n to get 3*n
     // Starting with a carry bit of 1 thus gives us 3*n + 1
-    // Removing initial 0's gives us an Odd result
+    // Removing initial (low-order) 0's gives us an Odd result
     public func collatz() {
         var carry: Bool = true
         var current: BitLink? = g.first
@@ -84,13 +83,18 @@ public class Odd: N {
             try! g.removeFirst()
         }
     }
+    public func collatzed() -> Odd {
+      let result = copy()
+      result.collatz()
+      return result
+    }
     
     public static func collatzProbability(ntrial: Int, nbit: Int, nbin: Int) -> HistogramModel {
         var counts: [Int] = []
         for _ in 0..<ntrial {
             let s2: Odd = try! Odd(nbit: nbit)
             var count: Int = 0
-            while try! s2.asInt() != 1 {
+            while s2.asInt() != 1 {
                 s2.collatz()
                 count += 1
             }

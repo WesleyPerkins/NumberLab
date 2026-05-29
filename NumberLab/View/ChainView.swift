@@ -4,7 +4,7 @@ struct ChainView: View {
     let nchain: Int
     let nbit: Int
     
-    @State private var chains: [[Int]] = []
+    @State private var chains: [[Odd]] = []
     @State private var isLoading: Bool = true
     
     init(nchain: Int, nbit: Int = 30) {
@@ -28,7 +28,7 @@ struct ChainView: View {
                 }
             }
         }
-        .navigationTitle("Collatz Chains"/* (\(nbit)-bit)*/)
+        .navigationTitle("Collatz Chains")
         .onAppear {
             generateChains()
         }
@@ -39,16 +39,14 @@ struct ChainView: View {
             let profiler = TimeProfiler(name: "Collatz Chain Generation")
             profiler.start(state: "Initialization")
             
-            var results: [[Int]] = []
+            var results: [[Odd]] = []
             
             profiler.start(state: "Generating Chains")
             for ordinal in 0..<nchain {
                 do {
-//                    let oddNumber = try Odd(nbit: nbit)
                     let oddNumber = try Odd(ordinal: ordinal)
                     let chain = oddNumber.collatzChain()
-                    let intChain = chain.compactMap { try? $0.asInt() }
-                    results.append(intChain)
+                    results.append(chain)
                 } catch {
                     print("Error generating chain: \(error)")
                 }
@@ -70,7 +68,7 @@ struct ChainView: View {
 
 struct ChainRow: View {
     let chainNumber: Int
-    let chain: [Int]
+    let chain: [Odd]
     
     var body: some View {
         HStack(alignment: .top, spacing: 4) {
@@ -87,12 +85,6 @@ struct ChainRow: View {
     }
     
     private var chainString: String {
-        chain.map { String($0) }.joined(separator: " → ")
-    }
-}
-
-#Preview {
-    NavigationView {
-        ChainView(nchain: 10, nbit: 20)
+        chain.map {$0.description }.joined(separator: " → ")
     }
 }
