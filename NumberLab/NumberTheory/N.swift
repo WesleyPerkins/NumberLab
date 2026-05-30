@@ -1,10 +1,10 @@
 import Foundation
 
 // can represent any natural number (0 is not included)
-public class N: Hashable, Comparable, CustomStringConvertible {
+public class NBit: Hashable, Comparable, CustomStringConvertible {
     let g: BitChain
-    static let zero: N = try! N(n: 0)
-    
+    static let zero: NBit = try! NBit(n: 0)
+
     public init(n: Int) throws {
         if n < 1 { throw NumberError.notNaturalNumber }
         var bitChain: BitChain? = nil
@@ -19,13 +19,13 @@ public class N: Hashable, Comparable, CustomStringConvertible {
         g = bitChain!
         assert(isValid())
     }
-    
+
     public convenience init(ordinal: Int) throws {
         if ordinal < 0 { throw NumberError.notOrdinal }
         try self.init(n: ordinal + 1)
     }
-    
-    // create random N of length nbit
+
+    // create random NBit of length nbit
     public init(nbit: Int) throws {
         if nbit < 1 { throw NumberError.notNaturalNumber }
         let bitChain: BitChain = BitChain(value: true)
@@ -35,27 +35,27 @@ public class N: Hashable, Comparable, CustomStringConvertible {
         g = bitChain
         assert(isValid())
     }
-    
+
     init(bitChain: BitChain) throws {
         if bitChain.isEmpty() { throw NumberError.notNaturalNumber }
         self.g = bitChain.copy()
         try self.g.shave()
         assert(isValid())
     }
-    
+
     public var description: String {
         return "\(asInt())"
     }
-    
-    func copy() -> N {
-        try! N(bitChain: g.copy())
+
+    func copy() -> NBit {
+        try! NBit(bitChain: g.copy())
     }
-    
+
     deinit { BitLink.freeAll(bitchain: g) }
-    
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(g.count)
-        
+
         // Hash first few and last few bits for variety
         var link: BitLink? = g.first
         var count = 0
@@ -64,7 +64,7 @@ public class N: Hashable, Comparable, CustomStringConvertible {
             link = link!.next
             count += 1
         }
-        
+
         // Last 4 bits (if number is long enough)
         if g.count > 8 {
             link = g.last.prev?.prev?.prev  // ~4 bits from end
@@ -74,9 +74,9 @@ public class N: Hashable, Comparable, CustomStringConvertible {
             }
         }
     }
-    
-    static let one: Odd = try! Odd(n: 1)
-    static let two: N = try! N(n: 2)
+
+    static let one: OddBit = try! OddBit(n: 1)
+    static let two: NBit = try! NBit(n: 2)
 
     public var asBits: String {
         var result: String = ""
@@ -87,13 +87,13 @@ public class N: Hashable, Comparable, CustomStringConvertible {
         }
         return result
     }
-    
+
     func nbit() -> Int { assert(isValid()); return g.count }
     func isValid() -> Bool { (!g.isEmpty()) && g.last.value }
     func isOne() -> Bool { (g.count == 1) && g.last.value }
     func isOdd() -> Bool { g.first.value }
 
-    func halve() -> N0 {
+    func halve() -> N0Bit {
         if isOne() { return .zero }
         let c = copy()
         try! c.shiftLess(1)
@@ -101,7 +101,7 @@ public class N: Hashable, Comparable, CustomStringConvertible {
         return .n(n: c)
     }
 
-    public static func gcd(_ uIn: N, _ vIn: N) -> N {
+    public static func gcd(_ uIn: NBit, _ vIn: NBit) -> NBit {
         var u = uIn.copy()
         var v = vIn.copy()
         var shift = 0
@@ -125,7 +125,7 @@ public class N: Hashable, Comparable, CustomStringConvertible {
         u.shiftMore(shift)
         return u
     }
-    
+
     // add initial zeroes (multiplies by pow(2,nshift))
     func shiftMore(_ nshift: Int) {
         assert( nshift >= 0 )
@@ -133,7 +133,7 @@ public class N: Hashable, Comparable, CustomStringConvertible {
             g.prepend(value: false)
         }
     }
-    
+
     // try to remove initial bits (divides by pow(2,nshift))
     func shiftLess(_ nshift: Int) throws {
         assert( (nshift >= 0) && (nshift < self.nbit()) )
@@ -141,9 +141,9 @@ public class N: Hashable, Comparable, CustomStringConvertible {
             try g.removeFirst()
         }
     }
-    
+
     // return -1, 0, +1 according to whether self is less than other, equal to other, greater than other
-    func compareTo(_ other: N) -> Int {
+    func compareTo(_ other: NBit) -> Int {
         assert(isValid() && other.isValid())
         if nbit() < other.nbit() {
             return -1
@@ -162,17 +162,15 @@ public class N: Hashable, Comparable, CustomStringConvertible {
             return 0
         }
     }
-    public static func compare(_ lhs: N, _ rhs: N) -> Int { lhs.compareTo(rhs) }
-    public static func < (lhs: N, rhs: N) -> Bool { compare(lhs, rhs) < 0 }
-    public static func <= (lhs: N, rhs: N) -> Bool { compare(lhs, rhs) <= 0 }
-    public static func == (lhs: N, rhs: N) -> Bool { compare(lhs, rhs) == 0 }
-    public static func >= (lhs: N, rhs: N) -> Bool { compare(lhs, rhs) >= 0 }
-    public static func > (lhs: N, rhs: N) -> Bool { compare(lhs, rhs) > 0 }
-    
-    // Overloading the '+=' operator
-    static func +=(lhs: inout N, rhs: N) { lhs = lhs + rhs }
-    // Overloading the '+' operator
-    static func +(lhs: N, rhs: N) -> N {
+    public static func compare(_ lhs: NBit, _ rhs: NBit) -> Int { lhs.compareTo(rhs) }
+    public static func < (lhs: NBit, rhs: NBit) -> Bool { compare(lhs, rhs) < 0 }
+    public static func <= (lhs: NBit, rhs: NBit) -> Bool { compare(lhs, rhs) <= 0 }
+    public static func == (lhs: NBit, rhs: NBit) -> Bool { compare(lhs, rhs) == 0 }
+    public static func >= (lhs: NBit, rhs: NBit) -> Bool { compare(lhs, rhs) >= 0 }
+    public static func > (lhs: NBit, rhs: NBit) -> Bool { compare(lhs, rhs) > 0 }
+
+    static func +=(lhs: inout NBit, rhs: NBit) { lhs = lhs + rhs }
+    static func +(lhs: NBit, rhs: NBit) -> NBit {
         assert(lhs.isValid() && rhs.isValid())
         var carry: Bool = false
         var value: Bool
@@ -191,16 +189,14 @@ public class N: Hashable, Comparable, CustomStringConvertible {
         if carry {
             bitChain.append(value: carry)
         }
-        return try! N(bitChain: bitChain)
+        return try! NBit(bitChain: bitChain)
     }
-    
-    // Overloading the '*=' operator
-    static func *=(lhs: inout N, rhs: N) { lhs = lhs * rhs }
-    // Overloading the '*' operator
-    static func *(lhs: N, rhs: N) -> N {
+
+    static func *=(lhs: inout NBit, rhs: NBit) { lhs = lhs * rhs }
+    static func *(lhs: NBit, rhs: NBit) -> NBit {
         assert(lhs.isValid() && rhs.isValid())
-        let lhsShift: N = lhs.copy()
-        var sum: N? = nil
+        let lhsShift: NBit = lhs.copy()
+        var sum: NBit? = nil
         var rBitlink: BitLink? = rhs.g.first
         while rBitlink != nil {
             if rBitlink!.value {
@@ -211,14 +207,11 @@ public class N: Hashable, Comparable, CustomStringConvertible {
         }
         return sum!
     }
-    
-    // Overloading the '-=' operator
-    static func -=(lhs: inout N, rhs: N) { lhs = lhs - rhs }
-    // Overloading the '-' operator
-    static func -(lhs: N, rhs: N) -> N {
+
+    static func -=(lhs: inout NBit, rhs: NBit) { lhs = lhs - rhs }
+    static func -(lhs: NBit, rhs: NBit) -> NBit {
         assert(lhs.isValid() && rhs.isValid() && (lhs > rhs))
-        // this will be mutated due to borrowing
-        let lhsDy: N = lhs.copy()
+        let lhsDy: NBit = lhs.copy()
         var borrowed: Bool
         var value: Bool
         (value, borrowed) = halfSubtract(lhsDy.g.first.value, rhs.g.first.value)
@@ -241,10 +234,9 @@ public class N: Hashable, Comparable, CustomStringConvertible {
             lBitlink = lBitlink!.next
             rBitlink = rBitlink?.next ?? nil
         }
-        return try! N(bitChain: bitChain)
+        return try! NBit(bitChain: bitChain)
     }
-    
-    // return the difference a - b and whether borrowing is required to produce it
+
     static func halfSubtract(_ a: Bool, _ b: Bool) -> (diff: Bool, borrow: Bool) {
         if a {
             return ( !b, false )
@@ -252,7 +244,7 @@ public class N: Hashable, Comparable, CustomStringConvertible {
             return b ? ( true, true ) : ( false, false )
         }
     }
-    
+
     static func halfAdd(_ a: Bool, _ b: Bool, _ carry: Bool) -> (sum: Bool, carry: Bool) {
         if carry {
             return ( (a == b), a || b)
@@ -260,7 +252,7 @@ public class N: Hashable, Comparable, CustomStringConvertible {
             return ( (a != b), a && b)
         }
     }
-    
+
     func asInt() -> Int {
         var result: Int = 0
         var power: Int = 1
@@ -274,11 +266,9 @@ public class N: Hashable, Comparable, CustomStringConvertible {
         }
         return result
     }
-    
-    // increment in-place
+
     func inc() {
         var bit: BitLink? = g.first
-        // replace 1's with 0's until we encounter a 0 - which we replace with 1 and we're done
         while bit != nil {
             if bit!.value {
                 bit!.value = false
@@ -288,14 +278,11 @@ public class N: Hashable, Comparable, CustomStringConvertible {
                 return
             }
         }
-        // if we've run out of data we append a 1
         g.append(value: true)
     }
-    
-    // decrement in-place
+
     func dec() throws {
         var bitLink: BitLink? = g.first
-        // replace 0's with 1's until we encounter a 1 - which we replace with 0 and we're done
         while bitLink != nil {
             if !bitLink!.value {
                 bitLink!.value = true
@@ -309,11 +296,9 @@ public class N: Hashable, Comparable, CustomStringConvertible {
         }
         throw NumberError.notNaturalNumber
     }
-    
-    // remove any powers of 2 in-place
+
     func sans2() throws {
         var bit: BitLink? = g.first
-        // remove all initial 0's
         while bit != nil {
             if bit!.value {
                 return
@@ -322,7 +307,7 @@ public class N: Hashable, Comparable, CustomStringConvertible {
             try! g.removeFirst()
         }
     }
-    
+
     //  A binary number is divisible by 3 if and only if the alternating sum of its bits
     //  (starting with +1 on the least significant bit) is divisible by 3.
     public func isTriple() -> Bool {
@@ -338,15 +323,15 @@ public class N: Hashable, Comparable, CustomStringConvertible {
         }
         return sum % 3 == 0
     }
-    
+
     // Binary long-division: returns (quotient, remainder) such that self = quotient * divisor + remainder.
-    func divide(by divisor: N) -> (quotient: N0, remainder: N0) {
+    func divide(by divisor: NBit) -> (quotient: N0Bit, remainder: N0Bit) {
         assert(isValid() && divisor.isValid())
         let cmp = compareTo(divisor)
         if cmp < 0  { return (.zero, .n(n: copy())) }
-        if cmp == 0 { return (.n(n: N.one.copy()), .zero) }
+        if cmp == 0 { return (.n(n: NBit.one.copy()), .zero) }
 
-        var remainder: N0 = .zero
+        var remainder: N0Bit = .zero
         var quotientReversed: BitChain? = nil
         var curr: BitLink? = g.last   // iterate MSB → LSB
 
@@ -354,7 +339,7 @@ public class N: Hashable, Comparable, CustomStringConvertible {
             let bit = curr!.value
             switch remainder {
             case .zero:
-                if bit { remainder = .n(n: N.one.copy()) }
+                if bit { remainder = .n(n: NBit.one.copy()) }
             case .n(let r):
                 r.shiftMore(1)
                 if bit { r.inc() }
@@ -364,23 +349,23 @@ public class N: Hashable, Comparable, CustomStringConvertible {
             if case .n(let r) = remainder {
                 let c = r.compareTo(divisor)
                 if c >= 0 {
-                    qBit    = true
+                    qBit      = true
                     remainder = c == 0 ? .zero : .n(n: r - divisor)
                 }
             }
 
             if quotientReversed == nil { quotientReversed = BitChain(value: qBit) }
-            else                        { quotientReversed!.append(value: qBit) }
+            else                       { quotientReversed!.append(value: qBit) }
             curr = curr!.prev
         }
 
         guard let qr = quotientReversed,
               let rev = try? qr.reverse(),
-              let q   = try? N(bitChain: rev) else { return (.zero, remainder) }
+              let q   = try? NBit(bitChain: rev) else { return (.zero, remainder) }
         return (.n(n: q), remainder)
     }
 
-    func divideBy3() throws -> (quotient: N0, remainder: Int) {
+    func divideBy3() throws -> (quotient: N0Bit, remainder: Int) {
         switch self {
             case .one: return (.zero, 1)
             case .two: return (.zero, 2)
@@ -399,7 +384,7 @@ public class N: Hashable, Comparable, CustomStringConvertible {
                     }
                     curr = curr!.prev
                 }
-                let quotient = try N(bitChain: quotientReversed!.reverse())
+                let quotient = try NBit(bitChain: quotientReversed!.reverse())
                 return (.n(n: quotient), remainder)
             }
         }
@@ -407,8 +392,8 @@ public class N: Hashable, Comparable, CustomStringConvertible {
 }
 
 // can represent any natural number or 0
-enum N0 {
-    case n (n: N)
+public enum N0Bit {
+    case n (n: NBit)
     case zero
 }
 
@@ -416,9 +401,9 @@ enum N0 {
 // count the number of consecutive 0's, then the number of consecutive 1's, ..., the final number of 1's
 public class MixedRadix: CustomStringConvertible {
     let mr: [Int]
-    
+
     func isValid() -> Bool { (!mr.isEmpty) && ((mr.count % 2) == 1) }
-    public init(n: N) throws {
+    public init(n: NBit) throws {
         assert(n.isValid() && n.g.first.value)
         var mrBuild: [Int] = []
 
@@ -455,3 +440,6 @@ public class MixedRadix: CustomStringConvertible {
         return result
     }
 }
+
+public typealias N  = NLimb
+public typealias N0 = N0Limb

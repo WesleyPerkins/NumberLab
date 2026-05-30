@@ -1,6 +1,6 @@
 import Foundation
 
-public class Odd: N {
+public class OddBit: NBit {
     public override init(n: Int) throws {
         if n % 2 == 0 { throw NumberError.notOdd }
         do {
@@ -9,7 +9,7 @@ public class Odd: N {
             throw error
         }
     }
-    
+
     public convenience init(ordinal: Int) throws {
         if ordinal < 0 { throw NumberError.notOrdinal }
         do {
@@ -18,14 +18,14 @@ public class Odd: N {
             throw error
         }
     }
-    
-    // create random Odd of length nbit
+
+    // create random OddBit of length nbit
     public override init(nbit: Int) throws {
         do { try super.init(nbit: nbit) } catch { throw error }
         g.first.value = true
         assert(isValid())
     }
-    
+
     override init(bitChain: BitChain) throws {
         if !bitChain.first.value { throw NumberError.notOdd }
         do {
@@ -34,23 +34,23 @@ public class Odd: N {
             throw error
         }
     }
-    
-    override func copy() -> Odd {
-        try! Odd(bitChain: g.copy())
+
+    override func copy() -> OddBit {
+        try! OddBit(bitChain: g.copy())
     }
-    
-    public func collatzChain() -> [Odd] {
-        var result: [Odd] = [self]
-        while result.last! != Odd.one {
-            let next:Odd = result.last!.collatzed()
+
+    public func collatzChain() -> [OddBit] {
+        var result: [OddBit] = [self]
+        while result.last! != OddBit.one {
+            let next: OddBit = result.last!.collatzed()
             result.append(next)
         }
         return result
     }
-    
+
     // Perform an in-place collatz: add n to a shifted version of n to get 3*n
     // Starting with a carry bit of 1 thus gives us 3*n + 1
-    // Removing initial (low-order) 0's gives us an Odd result
+    // Removing initial (low-order) 0's gives us an OddBit result
     public func collatz() {
         var carry: Bool = true
         var current: BitLink? = g.first
@@ -83,16 +83,17 @@ public class Odd: N {
             try! g.removeFirst()
         }
     }
-    public func collatzed() -> Odd {
-      let result = copy()
-      result.collatz()
-      return result
+
+    public func collatzed() -> OddBit {
+        let result = copy()
+        result.collatz()
+        return result
     }
-    
+
     public static func collatzProbability(ntrial: Int, nbit: Int, nbin: Int) -> HistogramModel {
         var counts: [Int] = []
         for _ in 0..<ntrial {
-            let s2: Odd = try! Odd(nbit: nbit)
+            let s2: OddBit = try! OddBit(nbit: nbit)
             var count: Int = 0
             while s2.asInt() != 1 {
                 s2.collatz()
@@ -106,3 +107,5 @@ public class Odd: N {
         return histogram
     }
 }
+
+public typealias Odd = OddLimb

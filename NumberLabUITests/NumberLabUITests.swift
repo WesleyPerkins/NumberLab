@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import NumberTheory
 
 final class NumberLabUITests: XCTestCase {
 //    func testImport

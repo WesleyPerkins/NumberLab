@@ -18,6 +18,75 @@ final class NumberLabTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    // MARK: - NLimb cross-validation against NBit
+
+    func testNLimbAsInt() throws {
+        for k in 1...200 {
+            let bit  = try NBit(n: k)
+            let limb = try NLimb(n: k)
+            XCTAssertEqual(bit.asInt(), limb.asInt(), "asInt mismatch at k=\(k)")
+        }
+    }
+
+    func testNLimbAddition() throws {
+        for a in 1...50 {
+            for b in 1...50 {
+                let sum = (try NBit(n: a) + NBit(n: b)).asInt()
+                let lum = (try NLimb(n: a) + NLimb(n: b)).asInt()
+                XCTAssertEqual(sum, lum, "addition mismatch: \(a)+\(b)")
+            }
+        }
+    }
+
+    func testNLimbSubtraction() throws {
+        for a in 2...60 {
+            for b in 1..<a {
+                let dif = (try NBit(n: a) - NBit(n: b)).asInt()
+                let lum = (try NLimb(n: a) - NLimb(n: b)).asInt()
+                XCTAssertEqual(dif, lum, "subtraction mismatch: \(a)-\(b)")
+            }
+        }
+    }
+
+    func testNLimbMultiplication() throws {
+        for a in 1...30 {
+            for b in 1...30 {
+                let prod = (try NBit(n: a) * NBit(n: b)).asInt()
+                let lum  = (try NLimb(n: a) * NLimb(n: b)).asInt()
+                XCTAssertEqual(prod, lum, "multiplication mismatch: \(a)*\(b)")
+            }
+        }
+    }
+
+    func testNLimbComparison() throws {
+        for a in 1...40 {
+            for b in 1...40 {
+                let bitCmp  = NBit.compare(try NBit(n: a), try NBit(n: b))
+                let limbCmp = NLimb.compare(try NLimb(n: a), try NLimb(n: b))
+                XCTAssertEqual(bitCmp, limbCmp, "comparison mismatch: \(a) vs \(b)")
+            }
+        }
+    }
+
+    func testNLimbDivideBy3() throws {
+        for k in 1...100 {
+            let (bq, br) = try! NBit(n: k).divideBy3()
+            let (lq, lr) = try! NLimb(n: k).divideBy3()
+            let bqInt = { if case .n(let n) = bq { return n.asInt() } else { return 0 } }()
+            let lqInt = { if case .n(let n) = lq { return n.asInt() } else { return 0 } }()
+            XCTAssertEqual(bqInt, lqInt, "divideBy3 quotient mismatch at k=\(k)")
+            XCTAssertEqual(br,    lr,    "divideBy3 remainder mismatch at k=\(k)")
+        }
+    }
+
+    func testOddLimbCollatzChain() throws {
+        for ordinal in 0...40 {
+            let bitChain  = try OddBit(ordinal: ordinal).collatzChain().map { $0.asInt() }
+            let limbChain = try OddLimb(ordinal: ordinal).collatzChain().map { $0.asInt() }
+            XCTAssertEqual(bitChain, limbChain, "collatzChain mismatch at ordinal=\(ordinal)")
+        }
+    }
+
     // MARK: - N.gcd
 
     func testGcdBasic() throws {
