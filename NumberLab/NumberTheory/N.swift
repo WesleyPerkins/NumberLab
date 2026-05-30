@@ -1,7 +1,7 @@
 import Foundation
 
 // can represent any natural number (0 is not included)
-public class N: Hashable, CustomStringConvertible {
+public class N: Hashable, Comparable, CustomStringConvertible {
     let g: BitChain
     static let zero: N = try! N(n: 0)
     
