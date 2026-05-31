@@ -52,7 +52,7 @@ class LimbChain {
 
     // Remove most-significant zero limbs so that last.value != 0.
     func shave() throws {
-        while self.last.value == 0 {
+        while self.count > 1 && self.last.value == 0 {
             self.removeLast()
         }
         if isEmpty() {

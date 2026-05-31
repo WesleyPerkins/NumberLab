@@ -26,34 +26,38 @@ struct CollatzIndexView: View {
                 if preImage.isEmpty {
                     Text("No pre-image found for index \(index)")
                 } else {
-                    Text("Pre-image has \(preImage.count) elements")
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 8) {
+                            ForEach(preImage, id: \.self) { odd in
+                                Text(String("\(odd)"))
+                            }
+                        }
+                        .padding()
+                    }
                 }
             }
         }
         .navigationTitle("Collatz Index")
         .onAppear {
-            readGraph(maxOrdinal: maxOrdinal)
+            readOrCreateGraph()
         }
     }
 
-    private func readGraph(maxOrdinal: Int) {
-        DispatchQueue.global(qos: .userInitiated).async {
+    private func readOrCreateGraph() {
+        let maxOrdinal = self.maxOrdinal
+        Task.detached {
             let profiler = TimeProfiler(name: "Collatz Graph Generation")
-            var graph: CollatzGraph
-
-            profiler.start(state: "Read from Disk")
+            profiler.start(state: "Read or Create")
             do {
-                try graph = CollatzGraph.deserialize(from: CollatzGraph.cacheURL(maxOrdinal: N(ordinal: maxOrdinal - 1)))
+                let graph = try CollatzGraph.readOrCreate(maxOrdinal: N(n: maxOrdinal))
+                profiler.finish()
+                await MainActor.run {
+                    self.graph = graph
+                    self.profiler = profiler
+                    self.isLoading = false
+                }
             } catch {
-                DispatchQueue.main.async { errorMessage = error.localizedDescription; isLoading = false }
-                return
-            }
-            profiler.finish()
-
-            DispatchQueue.main.async {
-                self.graph = graph
-                self.profiler = profiler
-                self.isLoading = false
+                await MainActor.run { self.errorMessage = error.localizedDescription; self.isLoading = false }
             }
         }
     }

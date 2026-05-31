@@ -7,7 +7,6 @@ struct CollatzGraphView: View {
     @State private var isLoading: Bool = true
     @State private var profiler: TimeProfiler? = nil
     @State private var errorMessage: String? = nil
-    @State private var roundTripOK: Bool? = nil
 
     init(nchain: Int) {
         self.maxOrdinal = nchain
@@ -21,10 +20,6 @@ struct CollatzGraphView: View {
             } else if let message = errorMessage {
                 Text(message).foregroundStyle(.red).padding()
             } else {
-                if let ok = roundTripOK {
-                    Text(ok ? "Round-trip: OK" : "Round-trip: MISMATCH")
-                        .foregroundStyle(ok ? .green : .red)
-                }
                 if let report = profiler?.description {
                     Text(report).font(.title)
                 }
@@ -32,71 +27,24 @@ struct CollatzGraphView: View {
         }
         .navigationTitle("Collatz Chains")
         .onAppear {
-//            generateGraph()
-            readGraph(maxOrdinal: maxOrdinal)
+            readOrCreateGraph()
         }
     }
 
-    private func generateGraph() {
+    private func readOrCreateGraph() {
         DispatchQueue.global(qos: .userInitiated).async {
             let profiler = TimeProfiler(name: "Collatz Graph Generation")
-            var graph: CollatzGraph
-            var graphRT: CollatzGraph
-
-            profiler.start(state: "Generating Graph")
+            profiler.start(state: "Read or Create")
             do {
-                graph = try CollatzGraph( maxOrdinal: try N(n: maxOrdinal) )
+                let graph = try CollatzGraph.readOrCreate(maxOrdinal: N(n: maxOrdinal))
+                profiler.finish()
+                DispatchQueue.main.async {
+                    self.graph = graph
+                    self.profiler = profiler
+                    self.isLoading = false
+                }
             } catch {
-                DispatchQueue.main.async { errorMessage = error.localizedDescription; isLoading = false }
-                return
-            }
-
-            profiler.start(state: "Save to Disk")
-            do {
-                try graph.serialize(to: graph.cacheURL)
-            } catch {
-                DispatchQueue.main.async { errorMessage = error.localizedDescription; isLoading = false }
-                return
-            }
-
-            profiler.start(state: "Read from Disk")
-            do {
-                try graphRT = CollatzGraph.deserialize(from: graph.cacheURL)
-            } catch {
-                DispatchQueue.main.async { errorMessage = error.localizedDescription; isLoading = false }
-                return
-            }
-
-            let ok = graph == graphRT
-            profiler.finish()
-
-            DispatchQueue.main.async {
-                self.graph = graph
-                self.roundTripOK = ok
-                self.profiler = profiler
-                self.isLoading = false
-            }
-        }
-    }
-    
-    private func readGraph(maxOrdinal: Int) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let profiler = TimeProfiler(name: "Collatz Graph Generation")
-            var graph: CollatzGraph
-
-            profiler.start(state: "Read from Disk")
-            do {
-                try graph = CollatzGraph.deserialize(from: CollatzGraph.cacheURL(maxOrdinal: N(ordinal: maxOrdinal - 1)))
-            } catch {
-                DispatchQueue.main.async { errorMessage = error.localizedDescription; isLoading = false }
-                return
-            }
-            profiler.finish()
-
-            DispatchQueue.main.async {
-                self.graph = graph
-                self.profiler = profiler
-                self.isLoading = false
+                DispatchQueue.main.async { self.errorMessage = error.localizedDescription; self.isLoading = false }
             }
         }
     }

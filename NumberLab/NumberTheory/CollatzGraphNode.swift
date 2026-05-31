@@ -1,9 +1,11 @@
 import Foundation
 
 class CollatzGraphNode: CustomStringConvertible {
-    let value: Odd         // value of this node
-    let next: Odd          // value of next node in Collatz map
-    var prevSet: Set<Odd>  // values of currently known immediate predecessors
+    let value: Odd          // value of this node
+    let next: Odd           // value of next node in Collatz map
+    var prevSet: Set<Odd>   // values of currently known immediate predecessors
+                            // (1 is NOT considered a predecessor of itself, else the
+                            // degree of precedence would be ill-defined)
     
     init(value: Odd, prevSet: Set<Odd> = []) throws {
         self.value = value
@@ -19,13 +21,17 @@ class CollatzGraphNode: CustomStringConvertible {
         return "value: \(value.asInt()), next: \(next.asInt()), prevSet: \(list.map { $0.asInt() })"
     }
     
-    func addPrev(_ odd: Odd) throws {
-        guard odd.collatzed() == value else { throw NumberError.collatzGraphError }
-        prevSet.insert(odd)
-    }
+//    func addPrev(_ odd: Odd) throws {
+//        guard odd.collatzed() == value else { throw NumberError.collatzGraphError }
+//        prevSet.insert(odd)
+//    }
 
     func validatePrevSet() -> Bool {
         for item in self.prevSet {
+            if item == .one {
+                print("1 is never considered a precedent")
+                return false
+            }
             if self.value != item.collatzed() {
                 print("invalid graphNode: \(self): \(value.asInt()) is not \(item.asInt()).collatzed()")
                 return false
@@ -100,13 +106,14 @@ class CollatzGraph: CustomStringConvertible {
         let keys: [Int] = mapCollatz.keys.sorted()
         var work: [Int:Set<Int>] = [:]
         for key in keys {
-            //            print("key: \(key)")
             let value = mapCollatz[key]!
-            assert( value != key || value == 1 )
-            work[value, default: Set<Int>()].insert(key)
+            if value != key {
+                work[value, default: Set<Int>()].insert(key)
+            }
         }
         var result: [Int:CollatzGraphNode] = [:]
         for key in keys {
+//            let prevSet: Set<Odd> = key == 1 ? [] : Set(try work[key]?.map { try Odd(n: $0) } ?? [])
             let prevSet: Set<Odd> = Set(try work[key]?.map { try Odd(n: $0) } ?? [])
             let graphNode = try CollatzGraphNode(value: Odd(n: key), prevSet: prevSet)
             //            print("graphNode: \(graphNode)")
@@ -125,16 +132,30 @@ class CollatzGraph: CustomStringConvertible {
     
     func serialize(to url: URL) throws {
         try FileManager.default.createDirectory(at: CollatzGraph.cacheDirectory, withIntermediateDirectories: true)
-        let json = CollatzGraphJSON(
-            maxOrdinal: maxOrdinal.asInt(),
-            map: Dictionary(uniqueKeysWithValues: map.map { key, node in
-                (String(key), node.prevSet.sorted().map { $0.asInt() })
-            })
-        )
-        let data = try JSONEncoder().encode(json)
-        try data.write(to: url)
+        let sortedKeys = map.keys.sorted()
+        var lines: [String] = ["{", "  \"maxOrdinal\":\(maxOrdinal.asInt()),", "  \"map\":{"]
+        for (i, key) in sortedKeys.enumerated() {
+            let prevList = map[key]!.prevSet.sorted().map { String($0.asInt()) }.joined(separator: ",")
+            let comma = i < sortedKeys.count - 1 ? "," : ""
+            lines.append("    \"\(key)\":[\(prevList)]\(comma)")
+        }
+        lines.append("  }")
+        lines.append("}")
+        try lines.joined(separator: "\n").write(to: url, atomically: true, encoding: .utf8)
     }
     
+    static func readOrCreate(maxOrdinal: N) throws -> CollatzGraph {
+        let url = cacheURL(maxOrdinal: maxOrdinal)
+        if FileManager.default.fileExists(atPath: url.path) {
+            if let graph = try? deserialize(from: url) {
+                return graph
+            }
+        }
+        let graph = try CollatzGraph(maxOrdinal: maxOrdinal)
+        try graph.serialize(to: url)
+        return graph
+    }
+
     static func deserialize(from url: URL) throws -> CollatzGraph {
         let data = try Data(contentsOf: url)
         let json = try JSONDecoder().decode(CollatzGraphJSON.self, from: data)
@@ -149,11 +170,15 @@ class CollatzGraph: CustomStringConvertible {
     }
     
     // return pre-image abs(index) steps before 1
-    func preImage(index: Int) -> Set<Odd> {
-        if (index >= 0) || (map[1]?.prevSet ?? []).isEmpty {
+    func preImage(index: Int) -> [Odd] {
+        if index >= 0 {
             return []
         }
-        var aSet: Set<Odd> = map[1]!.prevSet
+        let keys = map.keys.sorted()
+        var aSet: Set<Odd> = map[1]?.prevSet ?? []
+        if aSet.isEmpty {
+            return []
+        }
         var bSet: Set<Odd> = []
         var polar: Int = 1
         var count: Int = -1
@@ -180,7 +205,7 @@ class CollatzGraph: CustomStringConvertible {
             polar = -polar
             count -= 1
         }
-        return polar > 0 ? aSet : bSet
+        return polar > 0 ? aSet.sorted() : bSet.sorted()
     }
 }
     
