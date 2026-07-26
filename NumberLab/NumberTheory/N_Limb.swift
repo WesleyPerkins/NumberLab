@@ -1,6 +1,6 @@
 import Foundation
 
-public class NLimb: Hashable, Comparable, CustomStringConvertible {
+public class NLimb: Hashable, Comparable, CustomStringConvertible, CustomDebugStringConvertible {
     let g: LimbChain
 
     static let one: OddLimb = try! OddLimb(n: 1)
@@ -52,6 +52,9 @@ public class NLimb: Hashable, Comparable, CustomStringConvertible {
     }
 
     public var description: String { "\(asInt())" }
+    public var debugDescription: String {
+        g.count > 1 ? "\(asInt()) (truncated, \(g.count) limbs)" : "\(asInt())"
+    }
 
     func copy() -> NLimb { try! NLimb(limbChain: g.copy()) }
 

@@ -3,7 +3,6 @@ import Foundation
 // can represent any natural number (0 is not included)
 public class NBit: Hashable, Comparable, CustomStringConvertible {
     let g: BitChain
-    static let zero: NBit = try! NBit(n: 0)
 
     public init(n: Int) throws {
         if n < 1 { throw NumberError.notNaturalNumber }

@@ -29,7 +29,8 @@ struct CollatzIndexView: View {
                     ScrollView {
                         VStack(alignment: .leading, spacing: 8) {
                             ForEach(preImage, id: \.self) { odd in
-                                Text(String("\(odd)"))
+                                Text(String("\(odd) - \(odd.asBits)"))
+                                  .font(.system(.title3, design: .monospaced))
                             }
                         }
                         .padding()

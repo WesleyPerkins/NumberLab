@@ -55,7 +55,7 @@ class BitChain {
     
     // recursively remove MSG (most significant bit) if it is 0
     func shave() throws {
-        while !self.last.value {
+        while self.count > 1 && !self.last.value {
             self.removeLast()
         }
         if isEmpty() {

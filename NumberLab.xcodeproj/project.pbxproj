@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05E073202BC4EA1F08E8ED77 /* HaloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAECB2B71661B8FA66F267 /* HaloView.swift */; };
 		840DDBED29FE5E6D00EEFA98 /* NumberLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDBEC29FE5E6D00EEFA98 /* NumberLabApp.swift */; };
 		840DDBEF29FE5E6D00EEFA98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */; };
 		840DDBF129FE5E6E00EEFA98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840DDBF029FE5E6E00EEFA98 /* Assets.xcassets */; };
@@ -39,12 +40,9 @@
 		84CC00022EAB8FD100E8030F /* LimbChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC00012EAB8FD100E8030F /* LimbChain.swift */; };
 		84CC00042EAB8FD100E8030F /* N_Limb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC00032EAB8FD100E8030F /* N_Limb.swift */; };
 		84CC00062EAB8FD100E8030F /* Odd_Limb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC00052EAB8FD100E8030F /* Odd_Limb.swift */; };
+		84DB141C3015EB270061C91A /* CollatzHalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB141B3015EB270061C91A /* CollatzHalo.swift */; };
 		84ED8DBF2FB9DBA6004039DB /* I.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED8DBE2FB9DBA6004039DB /* I.swift */; };
-		84ED8DC02FB9DBA6004039DB /* I.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED8DBE2FB9DBA6004039DB /* I.swift */; };
-		84ED8DC12FB9DBA6004039DB /* I.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED8DBE2FB9DBA6004039DB /* I.swift */; };
 		84ED8DC32FB9E0B2004039DB /* Q.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED8DC22FB9E0B2004039DB /* Q.swift */; };
-		84ED8DC42FB9E0B2004039DB /* Q.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED8DC22FB9E0B2004039DB /* Q.swift */; };
-		84ED8DC52FB9E0B2004039DB /* Q.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED8DC22FB9E0B2004039DB /* Q.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41EAECB2B71661B8FA66F267 /* HaloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaloView.swift; sourceTree = "<group>"; };
 		840DDBE929FE5E6D00EEFA98 /* NumberLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		840DDBEC29FE5E6D00EEFA98 /* NumberLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberLabApp.swift; sourceTree = "<group>"; };
 		840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,6 +100,7 @@
 		84CC00012EAB8FD100E8030F /* LimbChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimbChain.swift; sourceTree = "<group>"; };
 		84CC00032EAB8FD100E8030F /* N_Limb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = N_Limb.swift; sourceTree = "<group>"; };
 		84CC00052EAB8FD100E8030F /* Odd_Limb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Odd_Limb.swift; sourceTree = "<group>"; };
+		84DB141B3015EB270061C91A /* CollatzHalo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollatzHalo.swift; sourceTree = "<group>"; };
 		84ED8DBE2FB9DBA6004039DB /* I.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.swift; sourceTree = "<group>"; };
 		84ED8DC22FB9E0B2004039DB /* Q.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Q.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +194,7 @@
 			children = (
 				841090482EAB8FD100E8030F /* BitChain.swift */,
 				841374F12EABD4C900B7E26A /* CollatzGraphNode.swift */,
+				84DB141B3015EB270061C91A /* CollatzHalo.swift */,
 				841090492EAB8FD100E8030F /* Constraint.swift */,
 				8410904A2EAB8FD100E8030F /* DebugUtl.swift */,
 				8410904B2EAB8FD100E8030F /* Factor.swift */,
@@ -218,11 +219,12 @@
 			isa = PBXGroup;
 			children = (
 				8433D2362EADE2040077E3CB /* BitStringView.swift */,
-				846C624E2FC6CF5600DC3409 /* CollatzGraphView.swift */,
 				845209C52EACBCE800CF2DFE /* ChainView.swift */,
+				41EAECB2B71661B8FA66F267 /* HaloView.swift */,
+				846C624E2FC6CF5600DC3409 /* CollatzGraphView.swift */,
+				849A41C02FC9DE0500B51F8E /* CollatzIndexView.swift */,
 				840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */,
 				840DDC1A29FE79CB00EEFA98 /* HistogramView.swift */,
-				849A41C02FC9DE0500B51F8E /* CollatzIndexView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -374,6 +376,7 @@
 			files = (
 				84ED8DBF2FB9DBA6004039DB /* I.swift in Sources */,
 				845209C62EACBCE800CF2DFE /* ChainView.swift in Sources */,
+				05E073202BC4EA1F08E8ED77 /* HaloView.swift in Sources */,
 				8433D2372EADE2040077E3CB /* BitStringView.swift in Sources */,
 				84ED8DC32FB9E0B2004039DB /* Q.swift in Sources */,
 				845209CC2EACD22200CF2DFE /* GeometryUtl.swift in Sources */,
@@ -400,6 +403,7 @@
 				840DDBED29FE5E6D00EEFA98 /* NumberLabApp.swift in Sources */,
 				840DDC1B29FE79CB00EEFA98 /* HistogramView.swift in Sources */,
 				846C624F2FC6CF5600DC3409 /* CollatzGraphView.swift in Sources */,
+				84DB141C3015EB270061C91A /* CollatzHalo.swift in Sources */,
 				845209CE2EACD36C00CF2DFE /* CgUtl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

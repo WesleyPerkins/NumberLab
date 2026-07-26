@@ -23,6 +23,16 @@ public class OddLimb: NLimb {
         try super.init(limbChain: limbChain)
     }
 
+    func asOrdinal() -> Int {
+        self.asInt() / 2
+    }
+
+    // o + 2 is always odd, so this can never actually throw.
+    public var successor: OddLimb {
+        let sum = self + NLimb.two
+        return try! OddLimb(limbChain: sum.g)
+    }
+
     override func copy() -> OddLimb { try! OddLimb(limbChain: g.copy()) }
 
     // Apply Collatz in-place: compute (3n+1)/2^k where k = v₂(3n+1).
@@ -79,7 +89,7 @@ public class OddLimb: NLimb {
         for _ in 0..<ntrial {
             let s = try! OddLimb(nbit: nbit)
             var count = 0
-            while s.asInt() != 1 {
+            while s != OddLimb.one {
                 s.collatz()
                 count += 1
             }

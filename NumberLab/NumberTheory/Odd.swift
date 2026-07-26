@@ -95,7 +95,7 @@ public class OddBit: NBit {
         for _ in 0..<ntrial {
             let s2: OddBit = try! OddBit(nbit: nbit)
             var count: Int = 0
-            while s2.asInt() != 1 {
+            while s2 != OddBit.one {
                 s2.collatz()
                 count += 1
             }

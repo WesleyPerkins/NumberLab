@@ -17,10 +17,10 @@ public class HistogramModel {
         let pad: Double = margin * (self.max - self.min) / Double(self.nbin)
         self.min -= pad
         self.max += pad
-        self.xscale = Double(self.nbin) / (self.max - self.min)
+        self.xscale = self.max > self.min ? Double(self.nbin) / (self.max - self.min) : 0
         self.values = Array(repeating: 0.0, count: nbin)
         for point in data {
-            let idx: Int = Int( (point.0 - self.min) * self.xscale )
+            let idx: Int = Swift.min(Swift.max(Int( (point.0 - self.min) * self.xscale ), 0), nbin - 1)
             values[idx] += point.1
         }
     }

@@ -40,7 +40,7 @@ struct BitStringView: View {
                 do {
                     let oddNumber = try Odd(n: n)
                     let chain = oddNumber.collatzChain()
-                    let bitStringChain = chain.compactMap { $0.description }
+                    let bitStringChain = chain.compactMap { $0.asBits }
                     results.append(bitStringChain)
                 } catch {
                     print("Error generating chain: \(error)")

@@ -21,11 +21,6 @@ class CollatzGraphNode: CustomStringConvertible {
         return "value: \(value.asInt()), next: \(next.asInt()), prevSet: \(list.map { $0.asInt() })"
     }
     
-//    func addPrev(_ odd: Odd) throws {
-//        guard odd.collatzed() == value else { throw NumberError.collatzGraphError }
-//        prevSet.insert(odd)
-//    }
-
     func validatePrevSet() -> Bool {
         for item in self.prevSet {
             if item == .one {
@@ -113,7 +108,6 @@ class CollatzGraph: CustomStringConvertible {
         }
         var result: [Int:CollatzGraphNode] = [:]
         for key in keys {
-//            let prevSet: Set<Odd> = key == 1 ? [] : Set(try work[key]?.map { try Odd(n: $0) } ?? [])
             let prevSet: Set<Odd> = Set(try work[key]?.map { try Odd(n: $0) } ?? [])
             let graphNode = try CollatzGraphNode(value: Odd(n: key), prevSet: prevSet)
             //            print("graphNode: \(graphNode)")
@@ -152,7 +146,7 @@ class CollatzGraph: CustomStringConvertible {
             }
         }
         let graph = try CollatzGraph(maxOrdinal: maxOrdinal)
-        try graph.serialize(to: url)
+        try? graph.serialize(to: url)
         return graph
     }
 
@@ -174,7 +168,6 @@ class CollatzGraph: CustomStringConvertible {
         if index >= 0 {
             return []
         }
-        let keys = map.keys.sorted()
         var aSet: Set<Odd> = map[1]?.prevSet ?? []
         if aSet.isEmpty {
             return []
