@@ -32,11 +32,12 @@ class CollatzHalo: CustomStringConvertible {
     }
     
     var description: String {
-        let maxS = Double(maxSolid.asOrdinal())
-        let maxH = Double(haloSet.max()?.asOrdinal() ?? 0)
-        let haloWidth = maxH == 0.0 ? 0.0 : Double( (maxH - maxS) / maxS )
+        let maxO = Double( haloSet.max()?.asInt() ?? 0 )
+        let maxS = Double(maxSolid.asInt())
+        let haloWidth = maxO == 0.0 ? 0.0 : Double( (maxO - maxS) )
+        let haloWidthRelative = haloWidth / maxS
         let haloDensity = haloWidth > 0.0 ? Double(haloSet.count) / haloWidth : 0.0
-        return "maxSolid: \(maxSolid) haloWidth: \(haloWidth) haloDensity: \(haloDensity)"
+        return "maxSolid: \(maxSolid) haloWidthRelative: \(haloWidthRelative) haloDensity: \(haloDensity)"
     }
 }
     

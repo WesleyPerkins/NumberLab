@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Graphics2D
 @testable import NumberLab
 
 final class NumberLabTests: XCTestCase {
@@ -16,6 +17,32 @@ final class NumberLabTests: XCTestCase {
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    // MARK: - Graphics2D (1000x1000 hand-settable pixel image)
+
+    func testGraphics2DPixelMatrix1000x1000() throws {
+        let width = 1000
+        let height = 1000
+        let matrix = PixelMatrix(type: .rgba, nrow: height, ncol: width)
+
+        // Set a handful of individual pixels by hand.
+        matrix.set(row: 0, col: 0, rawPixel: [255, 0, 0, 255])
+        matrix.set(row: 999, col: 999, rawPixel: [0, 255, 0, 255])
+        matrix.set(row: 500, col: 500, rawPixel: [0, 0, 255, 255])
+
+        guard let image = CGImage.create(pixelMatrix: matrix) else {
+            return XCTFail("CGImage.create(pixelMatrix:) returned nil")
+        }
+        XCTAssertEqual(image.width, width)
+        XCTAssertEqual(image.height, height)
+
+        guard let roundTripped = image.getPixelMatrix() else {
+            return XCTFail("getPixelMatrix() returned nil")
+        }
+        XCTAssertEqual(roundTripped.get(row: 0, col: 0), [255, 0, 0, 255])
+        XCTAssertEqual(roundTripped.get(row: 999, col: 999), [0, 255, 0, 255])
+        XCTAssertEqual(roundTripped.get(row: 500, col: 500), [0, 0, 255, 255])
     }
 
     // MARK: - NLimb cross-validation against NBit

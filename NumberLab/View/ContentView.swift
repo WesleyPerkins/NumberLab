@@ -4,7 +4,7 @@ struct ContentView: View {
     let sidebarItems: [SidebarItem] = [
         SidebarItem(title: "Bit Strings"),
         SidebarItem(title: "Collatz Chains", nchain: 32),
-        SidebarItem(title: "Collatz Halo", maxCount: 10000),
+        SidebarItem(title: "Collatz Halo", maxCount: 10000000),
         SidebarItem(title: "Collatz Index -1 16 bit", nbit: 16, index: -1),
         SidebarItem(title: "Collatz Index -2 16 bit", nbit: 16, index: -2),
         SidebarItem(title: "Collatz Index -2 20 bit", nbit: 20, index: -2),

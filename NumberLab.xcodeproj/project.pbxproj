@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71CF101208210185B64A2D1C /* Graphics2D in Frameworks */ = {isa = PBXBuildFile; productRef = 934DD3356B93AC5797FC46B6 /* Graphics2D */; };
+		E2D5F745F4C25FD0BB2D68AB /* Graphics2D in Frameworks */ = {isa = PBXBuildFile; productRef = 934DD3356B93AC5797FC46B6 /* Graphics2D */; };
 		05E073202BC4EA1F08E8ED77 /* HaloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAECB2B71661B8FA66F267 /* HaloView.swift */; };
 		840DDBED29FE5E6D00EEFA98 /* NumberLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDBEC29FE5E6D00EEFA98 /* NumberLabApp.swift */; };
 		840DDBEF29FE5E6D00EEFA98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */; };
@@ -110,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CF101208210185B64A2D1C /* Graphics2D in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2D5F745F4C25FD0BB2D68AB /* Graphics2D in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +261,7 @@
 			);
 			name = NumberLab;
 			packageProductDependencies = (
+				934DD3356B93AC5797FC46B6 /* Graphics2D */,
 			);
 			productName = NumberLab;
 			productReference = 840DDBE929FE5E6D00EEFA98 /* NumberLab.app */;
@@ -276,6 +281,9 @@
 				840DDBFC29FE5E6F00EEFA98 /* PBXTargetDependency */,
 			);
 			name = NumberLabTests;
+			packageProductDependencies = (
+				934DD3356B93AC5797FC46B6 /* Graphics2D */,
+			);
 			productName = NumberLabTests;
 			productReference = 840DDBFA29FE5E6F00EEFA98 /* NumberLabTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -331,6 +339,7 @@
 			);
 			mainGroup = 840DDBE029FE5E6D00EEFA98;
 			packageReferences = (
+				CF2F817E722AF4E437012E7A /* XCLocalSwiftPackageReference "../Graphics2D" */,
 			);
 			productRefGroup = 840DDBEA29FE5E6D00EEFA98 /* Products */;
 			projectDirPath = "";
@@ -726,6 +735,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		CF2F817E722AF4E437012E7A /* XCLocalSwiftPackageReference "../Graphics2D" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../Graphics2D;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		934DD3356B93AC5797FC46B6 /* Graphics2D */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Graphics2D;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 840DDBE129FE5E6D00EEFA98 /* Project object */;
 }

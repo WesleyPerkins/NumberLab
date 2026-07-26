@@ -51,9 +51,11 @@ public class NLimb: Hashable, Comparable, CustomStringConvertible, CustomDebugSt
         assert(isValid())
     }
 
-    public var description: String { "\(asInt())" }
+    public var description: String {
+        g.count == 1 ? "\(g.first.value)" : "\(g.first.value) (truncated, \(g.count) limbs)"
+    }
     public var debugDescription: String {
-        g.count > 1 ? "\(asInt()) (truncated, \(g.count) limbs)" : "\(asInt())"
+        g.count > 1 ? "\(g.first.value) (truncated, \(g.count) limbs)" : "\(g.first.value)"
     }
 
     func copy() -> NLimb { try! NLimb(limbChain: g.copy()) }
@@ -283,8 +285,9 @@ public class NLimb: Hashable, Comparable, CustomStringConvertible, CustomDebugSt
     }
 
     func asInt() -> Int {
-        // Correct for values <= Int.max (single-limb common case).
-        Int(bitPattern: UInt(g.first.value))
+        precondition(g.count == 1 && g.first.value <= UInt64(Int.max),
+                     "NLimb.asInt(): value does not fit in Int")
+        return Int(g.first.value)
     }
 
     func inc() {
