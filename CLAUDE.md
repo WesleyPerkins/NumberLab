@@ -2,24 +2,20 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Build & Test Commands
+## Build Commands
 
 **Build:**
 ```
 xcodebuild -project NumberLab.xcodeproj -scheme NumberLab build
 ```
 
-**Run all tests:**
+There is no test target — `NumberLabTests`/`NumberLabUITests` were removed. No
+linting or formatting tools are configured either — Xcode's built-in warnings are
+the primary code quality check. `Graphics2D` (a separate local Swift package
+dependency, see below) has its own test target if you need to verify changes there:
 ```
-xcodebuild test -project NumberLab.xcodeproj -scheme NumberLab -destination 'platform=macOS'
+swift test --package-path /Volumes/ExtremePro/Research/SwiftProjects/Graphics2D
 ```
-
-**Run a single test:**
-```
-xcodebuild test -project NumberLab.xcodeproj -scheme NumberLab -destination 'platform=macOS' -only-testing:NumberLabTests/NumberLabTests/<TestMethodName>
-```
-
-No linting or formatting tools are configured — Xcode's built-in warnings are the primary code quality check.
 
 ## Architecture Overview
 
