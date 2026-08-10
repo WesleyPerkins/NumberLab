@@ -37,7 +37,7 @@ public class OddLimb: NLimb {
 
     // Apply Collatz in-place: compute (3n+1)/2^k where k = v₂(3n+1).
     // 3n+1 = n + 2n + 1, computed limb-by-limb with initial carry = 1.
-    public func collatz() {
+    public func collatz() -> Int {
         // Pass 1: compute 3n+1 in-place.
         var carry: UInt64 = 1    // the +1
         var shiftCarry: UInt64 = 0
@@ -57,7 +57,11 @@ public class OddLimb: NLimb {
 
         // Pass 2: strip trailing zero bits (divide by 2^k until odd).
         // Remove whole zero limbs first (O(k/64) allocations saved).
-        while g.first.value == 0 { try! g.removeFirst() }
+        var twopow: Int = 0
+        while g.first.value == 0 {
+            try! g.removeFirst()
+            twopow += 64
+        }
         let tz = g.first.value.trailingZeroBitCount
         if tz > 0 {
             var link2: LimbLink? = g.first
@@ -67,22 +71,43 @@ public class OddLimb: NLimb {
                 link2 = link2!.next
             }
             try! g.shave()
+            twopow += tz
         }
+        return twopow
     }
 
-    public func collatzed() -> OddLimb {
-        let result = copy()
-        result.collatz()
-        return result
+//    public func collatzed() -> OddLimb {
+//        let result = copy()
+//        result.collatz()
+//        return result
+//    }
+    public func collatzed() -> (OddLimb, Int) {
+        let next = copy()
+        let twopow = next.collatz()
+        return (next, twopow)
     }
 
-    public func collatzChain() -> [OddLimb] {
-        var result: [OddLimb] = [self]
-        while result.last! != OddLimb.one {
-            result.append(result.last!.collatzed())
+    public func collatzChain() -> ([OddLimb], [Int]) {
+        if self.isOne() { return ([self], []) }
+        var next = self
+        var twopow: Int
+        var oList: [OddLimb] = [next]
+        var twopowList: [Int] = []
+        while !next.isOne() {
+            (next, twopow) = next.collatzed()
+            oList.append(next)
+            twopowList.append(twopow)
         }
-        return result
+//        oList.append(next)
+        return (oList, twopowList)
+
+//        var result: [OddLimb] = [self]
+//        while result.last! != OddLimb.one {
+//            result.append(result.last!.collatzed())
+//        }
+//        return result
     }
+
 
     public static func collatzProbability(ntrial: Int, nbit: Int, nbin: Int) -> HistogramModel {
         var counts: [Int] = []
@@ -90,7 +115,7 @@ public class OddLimb: NLimb {
             let s = try! OddLimb(nbit: nbit)
             var count = 0
             while s != OddLimb.one {
-                s.collatz()
+                _ = s.collatz()
                 count += 1
             }
             counts.append(count)

@@ -38,20 +38,25 @@ public class OddBit: NBit {
     override func copy() -> OddBit {
         try! OddBit(bitChain: g.copy())
     }
-
-    public func collatzChain() -> [OddBit] {
-        var result: [OddBit] = [self]
-        while result.last! != OddBit.one {
-            let next: OddBit = result.last!.collatzed()
-            result.append(next)
+ 
+    public func collatzChain() -> ([OddBit], [Int]) {
+        let next = self
+        var oList: [OddBit] = [next]
+        var twopowList: [Int] = []
+        while next != OddBit.one {
+            let (next, twopow) = next.collatzed()
+            oList.append(next)
+            twopowList.append(twopow)
         }
-        return result
+        oList.append(next)
+        return (oList, twopowList)
     }
 
     // Perform an in-place collatz: add n to a shifted version of n to get 3*n
     // Starting with a carry bit of 1 thus gives us 3*n + 1
     // Removing initial (low-order) 0's gives us an OddBit result
-    public func collatz() {
+    // Return the number of 0's removed
+    public func collatz() -> Int {
         var carry: Bool = true
         var current: BitLink? = g.first
         var y: Bool = false
@@ -79,15 +84,18 @@ public class OddBit: NBit {
                 g.append(value: true)
             }
         }
+        var twopow: Int = 0
         while !g.first.value {
             try! g.removeFirst()
+            twopow += 1
         }
+        return twopow
     }
 
-    public func collatzed() -> OddBit {
-        let result = copy()
-        result.collatz()
-        return result
+    public func collatzed() -> (OddBit, Int) {
+        let next = copy()
+        let twopow = next.collatz()
+        return (next, twopow)
     }
 
     public static func collatzProbability(ntrial: Int, nbit: Int, nbin: Int) -> HistogramModel {
@@ -96,7 +104,7 @@ public class OddBit: NBit {
             let s2: OddBit = try! OddBit(nbit: nbit)
             var count: Int = 0
             while s2 != OddBit.one {
-                s2.collatz()
+                _ = s2.collatz()
                 count += 1
             }
             counts.append(count)

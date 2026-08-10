@@ -1,5 +1,9 @@
 import Foundation
 
+enum StackError: Error {
+    case underflow
+}
+
 class Stack<T>: CustomStringConvertible {
     var data: [T]
     init(data: [T] = []) { self.data = data }
@@ -10,6 +14,10 @@ class Stack<T>: CustomStringConvertible {
         (offset < data.count) ? data[(data.count - 1) - offset] : nil }
     func push(_ o: T) { data.append(o) }
     func clear() { data = [] }
+    func replaceTop(_ value: T) throws {
+        if data.isEmpty { throw StackError.underflow }
+        data[data.count - 1] = value
+    }
     
     // Default string representation (forward order)
     var description: String {

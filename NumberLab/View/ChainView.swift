@@ -4,7 +4,7 @@ struct ChainView: View {
     let nchain: Int
     let nbit: Int
     
-    @State private var chains: [[Odd]] = []
+    @State private var chains: [ ( [Odd], [Int] ) ] = []
     @State private var isLoading: Bool = true
     
     init(nchain: Int, nbit: Int = 30) {
@@ -39,7 +39,7 @@ struct ChainView: View {
             let profiler = TimeProfiler(name: "Collatz Chain Generation")
             profiler.start(state: "Initialization")
             
-            var results: [[Odd]] = []
+            var results: [( [Odd], [Int] )] = []
             
             profiler.start(state: "Generating Chains")
             for ordinal in 0..<nchain {
@@ -68,7 +68,7 @@ struct ChainView: View {
 
 struct ChainRow: View {
     let chainNumber: Int
-    let chain: [Odd]
+    let chain: ( [Odd], [Int] )
     
     var body: some View {
         HStack(alignment: .top, spacing: 4) {
@@ -85,6 +85,6 @@ struct ChainRow: View {
     }
     
     private var chainString: String {
-        chain.map {$0.description }.joined(separator: " → ")
+        chain.0.map {$0.description }.joined(separator: " → ")
     }
 }

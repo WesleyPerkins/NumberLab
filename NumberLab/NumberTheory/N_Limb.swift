@@ -51,11 +51,19 @@ public class NLimb: Hashable, Comparable, CustomStringConvertible, CustomDebugSt
         assert(isValid())
     }
 
+    // o * (2**pow2)
+    public init(o: Odd, pow2: Int) throws {
+        if pow2 < 0 { throw NumberError.notNaturalNumber }
+        g = o.g.copy()
+        shiftMore(pow2)
+        assert(isValid())
+    }
+
     public var description: String {
         g.count == 1 ? "\(g.first.value)" : "\(g.first.value) (truncated, \(g.count) limbs)"
     }
     public var debugDescription: String {
-        g.count > 1 ? "\(g.first.value) (truncated, \(g.count) limbs)" : "\(g.first.value)"
+        description
     }
 
     func copy() -> NLimb { try! NLimb(limbChain: g.copy()) }
@@ -422,6 +430,13 @@ public class NLimb: Hashable, Comparable, CustomStringConvertible, CustomDebugSt
         // qChain is MSL-first; reverse to get LSL-first canonical form.
         let quotient = try NLimb(limbChain: qChain!.reverse())
         return (.n(n: quotient), Int(rem))
+    }
+
+    // n / 3 if n is a multiple of 3, otherwise nil.
+    public func div3() -> N? {
+        let (quotient, remainder) = try! divideBy3()
+        guard remainder == 0, case .n(let q) = quotient else { return nil }
+        return q
     }
 }
 

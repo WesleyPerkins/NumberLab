@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		71CF101208210185B64A2D1C /* Graphics2D in Frameworks */ = {isa = PBXBuildFile; productRef = 934DD3356B93AC5797FC46B6 /* Graphics2D */; };
 		05E073202BC4EA1F08E8ED77 /* HaloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EAECB2B71661B8FA66F267 /* HaloView.swift */; };
+		71CF101208210185B64A2D1C /* Graphics2D in Frameworks */ = {isa = PBXBuildFile; productRef = 934DD3356B93AC5797FC46B6 /* Graphics2D */; };
 		840DDBED29FE5E6D00EEFA98 /* NumberLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDBEC29FE5E6D00EEFA98 /* NumberLabApp.swift */; };
 		840DDBEF29FE5E6D00EEFA98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDBEE29FE5E6D00EEFA98 /* ContentView.swift */; };
 		840DDBF129FE5E6E00EEFA98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840DDBF029FE5E6E00EEFA98 /* Assets.xcassets */; };
@@ -39,10 +39,10 @@
 		84CC00042EAB8FD100E8030F /* N_Limb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC00032EAB8FD100E8030F /* N_Limb.swift */; };
 		84CC00062EAB8FD100E8030F /* Odd_Limb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC00052EAB8FD100E8030F /* Odd_Limb.swift */; };
 		84DB141C3015EB270061C91A /* CollatzHalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB141B3015EB270061C91A /* CollatzHalo.swift */; };
+		84ECBC88302870EE00067072 /* BitUtl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECBC87302870EE00067072 /* BitUtl.swift */; };
 		84ED8DBF2FB9DBA6004039DB /* I.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED8DBE2FB9DBA6004039DB /* I.swift */; };
 		84ED8DC32FB9E0B2004039DB /* Q.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED8DC22FB9E0B2004039DB /* Q.swift */; };
 /* End PBXBuildFile section */
-
 
 /* Begin PBXFileReference section */
 		41EAECB2B71661B8FA66F267 /* HaloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaloView.swift; sourceTree = "<group>"; };
@@ -78,6 +78,7 @@
 		84CC00032EAB8FD100E8030F /* N_Limb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = N_Limb.swift; sourceTree = "<group>"; };
 		84CC00052EAB8FD100E8030F /* Odd_Limb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Odd_Limb.swift; sourceTree = "<group>"; };
 		84DB141B3015EB270061C91A /* CollatzHalo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollatzHalo.swift; sourceTree = "<group>"; };
+		84ECBC87302870EE00067072 /* BitUtl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitUtl.swift; sourceTree = "<group>"; };
 		84ED8DBE2FB9DBA6004039DB /* I.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I.swift; sourceTree = "<group>"; };
 		84ED8DC22FB9E0B2004039DB /* Q.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Q.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,6 +176,7 @@
 		845209C22EACA9A900CF2DFE /* Utl */ = {
 			isa = PBXGroup;
 			children = (
+				84ECBC87302870EE00067072 /* BitUtl.swift */,
 				845209CD2EACD36C00CF2DFE /* CgUtl.swift */,
 				845209CB2EACD22200CF2DFE /* GeometryUtl.swift */,
 				845209C32EACA9BE00CF2DFE /* Stack.swift */,
@@ -286,6 +288,7 @@
 				84CC00042EAB8FD100E8030F /* N_Limb.swift in Sources */,
 				84CC00062EAB8FD100E8030F /* Odd_Limb.swift in Sources */,
 				840DDBED29FE5E6D00EEFA98 /* NumberLabApp.swift in Sources */,
+				84ECBC88302870EE00067072 /* BitUtl.swift in Sources */,
 				840DDC1B29FE79CB00EEFA98 /* HistogramView.swift in Sources */,
 				846C624F2FC6CF5600DC3409 /* CollatzGraphView.swift in Sources */,
 				84DB141C3015EB270061C91A /* CollatzHalo.swift in Sources */,
@@ -294,7 +297,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
 
 /* Begin XCBuildConfiguration section */
 		840DDC0C29FE5E6F00EEFA98 /* Debug */ = {

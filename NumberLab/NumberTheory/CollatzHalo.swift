@@ -23,7 +23,7 @@ class CollatzHalo: CustomStringConvertible {
         var haloPending: Set<Odd> = []  // set of newly known convergents > maxSolid
         while ( oNext > maxSolid ) && ( !haloSet.contains(oNext) ) {
             haloPending.insert(oNext)
-            oNext = oNext.collatzed()
+            (oNext, _) = oNext.collatzed()
         }
         haloSet.formUnion( haloPending )
         assert( haloSet.contains(oCheck) )

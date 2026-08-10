@@ -9,7 +9,7 @@ class CollatzGraphNode: CustomStringConvertible {
     
     init(value: Odd, prevSet: Set<Odd> = []) throws {
         self.value = value
-        self.next = value.collatzed()
+        (self.next, _) = value.collatzed()
         self.prevSet = prevSet
         if !validatePrevSet() {
             throw NumberError.collatzGraphError
@@ -27,7 +27,7 @@ class CollatzGraphNode: CustomStringConvertible {
                 print("1 is never considered a precedent")
                 return false
             }
-            if self.value != item.collatzed() {
+            if self.value != item.collatzed().0 {
                 print("invalid graphNode: \(self): \(value.asInt()) is not \(item.asInt()).collatzed()")
                 return false
             }
@@ -75,7 +75,7 @@ class CollatzGraph: CustomStringConvertible {
                     var oddNumber = try Odd(ordinal: ordinal)
                     //                    print("processing: \(oddNumber)")
                     while mapCollatz[oddNumber.asInt()] == nil {
-                        let oddNumberNext = oddNumber.collatzed()
+                        let (oddNumberNext, _) = oddNumber.collatzed()
                         mapCollatz.updateValue(oddNumberNext.asInt(), forKey: oddNumber.asInt())
                         oddNumber = oddNumberNext
                     }
