@@ -76,12 +76,23 @@ struct ChainRow: View {
                 .font(.system(.body, design: .monospaced))
                 .foregroundColor(.secondary)
                 .frame(width: 40, alignment: .trailing)
-            
+            Text(chainSummary)
+                .font(.system(.body, design: .monospaced))
+                .textSelection(.enabled)
             Text(chainString)
                 .font(.system(.body, design: .monospaced))
                 .textSelection(.enabled)
         }
         .padding(.vertical, 2)
+    }
+    
+    private var chainSummary: String {
+        var result =
+            "[" +
+            chain.1.reversed().map {$0.description }.joined(separator: ",") +
+            "]"
+        result += " (\(chain.1.count), \(chain.1.reduce(0, +))) "
+        return result
     }
     
     private var chainString: String {
