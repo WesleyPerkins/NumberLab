@@ -100,26 +100,17 @@ class SyracuseGraph: Equatable, CustomStringConvertible {
         }
         return result
     }
-    
-//    static func toMap(mapSyracuse: [Int:Int]) throws -> [Int:SyracuseGraphNode] {
-//        let keys: [Int] = mapSyracuse.keys.sorted()
-//        var work: [Int:Set<Int>] = [:]
-//        for key in keys {
-//            let value = mapSyracuse[key]!
-//            if value != key {
-//                work[value, default: Set<Int>()].insert(key)
-//            }
-//        }
-//        var result: [Int:SyracuseGraphNode] = [:]
-//        for key in keys {
-//            let prevSet: Set<Odd> = Set(try work[key]?.map { try Odd(n: $0) } ?? [])
-//            let graphNode = try SyracuseGraphNode(value: Odd(n: key), prevSet: prevSet)
-//            print("graphNode: \(graphNode)")
-//            result.updateValue(graphNode, forKey: key)
-//        }
-//        return result
-//    }
-    
+
+    func heightBounds() -> (min: Int, max: Int) {
+        let heights = map.values.map { $0.height }
+        return (min: heights.min()!, max: heights.max()!)
+    }
+
+    func excessBounds() -> (min: Int, max: Int) {
+        let excesses = map.values.map { $0.excess }
+        return (min: excesses.min()!, max: excesses.max()!)
+    }
+
     static let cacheDirectory = URL(fileURLWithPath: "/Volumes/ExtremePro/Caches/Syracuse")
     
     static func cacheURL(max: Int) -> URL {
@@ -127,6 +118,11 @@ class SyracuseGraph: Equatable, CustomStringConvertible {
     }
     
     var cacheURL: URL { SyracuseGraph.cacheURL(max: max) }
+
+    static func == (lhs: SyracuseGraph, rhs: SyracuseGraph) -> Bool {
+        lhs.max == rhs.max && lhs.map == rhs.map
+    }
+}
     
 //    func serialize(to url: URL) throws {
 //        try FileManager.default.createDirectory(at: SyracuseGraph.cacheDirectory, withIntermediateDirectories: true)
@@ -166,48 +162,3 @@ class SyracuseGraph: Equatable, CustomStringConvertible {
 //        }
 //        return SyracuseGraph(maxOrdinal: try N(n: json.maxOrdinal), map: result)
 //    }
-    
-    // return pre-image abs(index) steps before 1
-    func preImage(index: Int) -> [Odd] {
-//        if index >= 0 {
-//            return []
-//        }
-//        var aSet: Set<Odd> = map[1]?.prevSet ?? []
-//        if aSet.isEmpty {
-//            return []
-//        }
-//        var bSet: Set<Odd> = []
-//        var polar: Int = 1
-//        var count: Int = -1
-//        while count > index {
-//            if polar > 0 {
-//                bSet = []
-//                for o in aSet {
-//                    if let prevPrev = map[o.asInt()]?.prevSet {
-//                        for oPrev in prevPrev {
-//                            bSet.insert(oPrev)
-//                        }
-//                    }
-//                }
-//            } else {
-//                aSet = []
-//                for o in bSet {
-//                    if let prevPrev = map[o.asInt()]?.prevSet {
-//                        for oPrev in prevPrev {
-//                            aSet.insert(oPrev)
-//                        }
-//                    }
-//                }
-//            }
-//            polar = -polar
-//            count -= 1
-//        }
-//        return polar > 0 ? aSet.sorted() : bSet.sorted()
-        return []
-    }
-
-    static func == (lhs: SyracuseGraph, rhs: SyracuseGraph) -> Bool {
-        lhs.max == rhs.max && lhs.map == rhs.map
-    }
-}
-    
