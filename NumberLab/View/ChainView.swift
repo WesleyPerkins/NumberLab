@@ -15,7 +15,7 @@ struct ChainView: View {
     var body: some View {
         VStack {
             if isLoading {
-                ProgressView("Generating Collatz chains...")
+                ProgressView("Generating Syracuse chains...")
                     .padding()
             } else {
                 ScrollView {
@@ -28,7 +28,7 @@ struct ChainView: View {
                 }
             }
         }
-        .navigationTitle("Collatz Chains")
+        .navigationTitle("Syracuse Chains")
         .onAppear {
             generateChains()
         }
@@ -36,7 +36,7 @@ struct ChainView: View {
     
     private func generateChains() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let profiler = TimeProfiler(name: "Collatz Chain Generation")
+            let profiler = TimeProfiler(name: "Syracuse Chain Generation")
             profiler.start(state: "Initialization")
             
             var results: [( [Odd], [Int] )] = []
@@ -45,7 +45,7 @@ struct ChainView: View {
             for ordinal in 0..<nchain {
                 do {
                     let oddNumber = try Odd(ordinal: ordinal)
-                    let chain = oddNumber.collatzChain()
+                    let chain = oddNumber.syracuseChain()
                     results.append(chain)
                 } catch {
                     print("Error generating chain: \(error)")

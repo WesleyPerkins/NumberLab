@@ -39,12 +39,12 @@ public class OddBit: NBit {
         try! OddBit(bitChain: g.copy())
     }
  
-    public func collatzChain() -> ([OddBit], [Int]) {
+    public func syracuseChain() -> ([OddBit], [Int]) {
         let next = self
         var oList: [OddBit] = [next]
         var twopowList: [Int] = []
         while next != OddBit.one {
-            let (next, twopow) = next.collatzed()
+            let (next, twopow) = next.syracused()
             oList.append(next)
             twopowList.append(twopow)
         }
@@ -52,11 +52,11 @@ public class OddBit: NBit {
         return (oList, twopowList)
     }
 
-    // Perform an in-place collatz: add n to a shifted version of n to get 3*n
+    // Perform an in-place syracuse: add n to a shifted version of n to get 3*n
     // Starting with a carry bit of 1 thus gives us 3*n + 1
     // Removing initial (low-order) 0's gives us an OddBit result
     // Return the number of 0's removed
-    public func collatz() -> Int {
+    public func syracuse() -> Int {
         var carry: Bool = true
         var current: BitLink? = g.first
         var y: Bool = false
@@ -92,19 +92,19 @@ public class OddBit: NBit {
         return twopow
     }
 
-    public func collatzed() -> (OddBit, Int) {
+    public func syracused() -> (OddBit, Int) {
         let next = copy()
-        let twopow = next.collatz()
+        let twopow = next.syracuse()
         return (next, twopow)
     }
 
-    public static func collatzProbability(ntrial: Int, nbit: Int, nbin: Int) -> HistogramModel {
+    public static func syracuseProbability(ntrial: Int, nbit: Int, nbin: Int) -> HistogramModel {
         var counts: [Int] = []
         for _ in 0..<ntrial {
             let s2: OddBit = try! OddBit(nbit: nbit)
             var count: Int = 0
             while s2 != OddBit.one {
-                _ = s2.collatz()
+                _ = s2.syracuse()
                 count += 1
             }
             counts.append(count)

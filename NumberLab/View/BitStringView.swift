@@ -13,7 +13,7 @@ struct BitStringView: View {
     var body: some View {
         VStack {
             if isLoading {
-                ProgressView("Generating Collatz chains...")
+                ProgressView("Generating SyracuseSyracuse chains...")
                     .padding()
             } else {
                 ScrollView {
@@ -26,7 +26,7 @@ struct BitStringView: View {
                 }
             }
         }
-        .navigationTitle("Collatz Chains"/* (\(nbit)-bit)*/)
+        .navigationTitle("Syracuse Chains"/* (\(nbit)-bit)*/)
         .onAppear {
             generateChains()
         }
@@ -39,7 +39,7 @@ struct BitStringView: View {
                 let n = (1 << power) - 1
                 do {
                     let oddNumber = try Odd(n: n)
-                    let chain = oddNumber.collatzChain()
+                    let chain = oddNumber.syracuseChain()
                     let bitStringChain = chain.0.compactMap { $0.asBits }
                     results.append(bitStringChain)
                 } catch {

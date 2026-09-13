@@ -1,8 +1,8 @@
-class CollatzHalo: CustomStringConvertible {
+class SyracuseHalo: CustomStringConvertible {
     var maxSolid: Odd           // we know all o are convergent for o <= maxSolid
     var haloSet: Set<Odd> = []  // set of known convergents > maxSolid
 
-    init(copyMe: CollatzHalo? = nil) {
+    init(copyMe: SyracuseHalo? = nil) {
         if let copyMe = copyMe {
             self.maxSolid = copyMe.maxSolid
             self.haloSet = copyMe.haloSet
@@ -12,8 +12,8 @@ class CollatzHalo: CustomStringConvertible {
         }
     }
 
-    static func copy(_ copyMe: CollatzHalo) -> CollatzHalo {
-        return CollatzHalo(copyMe: copyMe)
+    static func copy(_ copyMe: SyracuseHalo) -> SyracuseHalo {
+        return SyracuseHalo(copyMe: copyMe)
     }
 
     // Process next candidate in-place
@@ -23,7 +23,7 @@ class CollatzHalo: CustomStringConvertible {
         var haloPending: Set<Odd> = []  // set of newly known convergents > maxSolid
         while ( oNext > maxSolid ) && ( !haloSet.contains(oNext) ) {
             haloPending.insert(oNext)
-            (oNext, _) = oNext.collatzed()
+            (oNext, _) = oNext.syracused()
         }
         haloSet.formUnion( haloPending )
         assert( haloSet.contains(oCheck) )

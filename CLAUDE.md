@@ -48,3 +48,28 @@ The heart of the app. All computation happens here, with no external dependencie
 - **`Odd` as a subclass of `N`**: Collatz-specific behavior lives in `Odd` rather than `N` to keep the base number type general-purpose.
 - **In-place mutation**: `collatz()` mutates the `Odd` in place; callers that need to preserve the original must copy first.
 - **Memory pooling in `BitChain`**: The free-list allocator in `BitChain` is intentional — during histogram runs over thousands of large numbers, allocation pressure would otherwise dominate runtime.
+
+## In progress: 2D Cartesian plotting facility
+
+Goal: a reusable facility for plotting 2D Cartesian graphs (lines, curves, arbitrary functions) —
+likely to support visualizing number-theory data (e.g. Collatz chain behavior, partition growth)
+beyond what `HistogramView` currently offers.
+
+A survey of every other project in `/Volumes/ExtremePro/Research/SwiftProjects` (2026-08-13) found
+no existing reusable Cartesian/function-plotting component to pull in instead. `Graphics2D` (the
+one dependency NumberLab already has) is pixel/image-level (`CGImageConversion`, `Pixel`,
+`SparseMatrix`) and unrelated. Two relevant building blocks exist elsewhere but neither is a
+drop-in solution:
+
+- **SwiftUI `Charts` (`LineMark`)** — used ad hoc in `../Quantum/Quantum/ResultsUtl.swift` (around
+  line 219) to plot `(x, y)` point series. Not a shared component, just page-local usage, but it
+  demonstrates the idiomatic/least-effort path: sample a function into `[CGPoint]` and feed it to
+  `LineMark` to get axes, gridlines, and labels for free. NumberLab doesn't currently depend on
+  `Charts` (not in `Package.swift`/project deps) — would need adding.
+- **`Utl/CgUtl.swift`** (already in this project) — has `CGMultiLine: Shape` (renders a polyline
+  from `[CGPoint]` via `path(in:)`), plus `CGRect.scaleToFit`/`centerScaleToFit` `CGAffineTransform`
+  helpers and point interpolation. This is the toolkit for hand-rolling a `Canvas`-based plotter
+  with custom axis/tick control instead of using `Charts`.
+
+No decision has been made yet between adopting `Charts` vs. a custom `Canvas` renderer built on
+`CgUtl.swift`.

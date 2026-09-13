@@ -59,6 +59,16 @@ public class NLimb: Hashable, Comparable, CustomStringConvertible, CustomDebugSt
         assert(isValid())
     }
 
+    // constructs the value 2^exponent
+    public init(powerOfTwo exponent: Int) throws {
+        if exponent < 1 { throw NumberError.notNaturalNumber }
+        let limbShift = exponent / 64
+        let bitShift  = exponent % 64
+        g = LimbChain(value: UInt64(1) << bitShift)
+        for _ in 0..<limbShift { g.prepend(value: 0) }
+        assert(isValid())
+    }
+
     public var description: String {
         g.count == 1 ? "\(g.first.value)" : "\(g.first.value) (truncated, \(g.count) limbs)"
     }
@@ -350,7 +360,7 @@ public class NLimb: Hashable, Comparable, CustomStringConvertible, CustomDebugSt
         return sum % 3 == 0
     }
 
-    // Binary long-division, bit-by-bit (correctness over speed for the non-Collatz path).
+    // Binary long-division, bit-by-bit (correctness over speed for the non-Syracuse path).
     func divide(by divisor: NLimb) -> (quotient: N0Limb, remainder: N0Limb) {
         assert(isValid() && divisor.isValid())
         let cmp = compareTo(divisor)

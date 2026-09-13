@@ -3,16 +3,14 @@ import SwiftUI
 struct ContentView: View {
     let sidebarItems: [SidebarItem] = [
         SidebarItem(title: "Bit Strings"),
-        SidebarItem(title: "Collatz Chains", nchain: 32),
-        SidebarItem(title: "Collatz Halo", nmax: 1024),
-        SidebarItem(title: "Collatz Index -1 16 bit", nbit: 16, index: -1),
-        SidebarItem(title: "Collatz Index -2 16 bit", nbit: 16, index: -2),
-        SidebarItem(title: "Collatz Index -2 20 bit", nbit: 20, index: -2),
-        SidebarItem(title: "Collatz Graph 16 bit", nbit: 16),
-        SidebarItem(title: "Collatz Graph 20 bit", nbit: 20),
-        SidebarItem(title: "Collatz Histogram 30 bit", nbit: 30),
-        SidebarItem(title: "Collatz Histogram 100 bit", nbit: 100),
-        SidebarItem(title: "Collatz Histogram 200 bit", nbit: 200),
+        SidebarItem(title: "Syracuse Chains", nchain: 32),
+        SidebarItem(title: "Syracuse Chain Stats", nchain: 1024*1024),
+        SidebarItem(title: "Syracuse Halo", nmax: 1024),
+        SidebarItem(title: "Syracuse Graph 16 bit", nbit: 16),
+        SidebarItem(title: "Syracuse Graph 20 bit", nbit: 20),
+        SidebarItem(title: "Syracuse Histogram 30 bit", nbit: 30),
+        SidebarItem(title: "Syracuse Histogram 100 bit", nbit: 100),
+        SidebarItem(title: "Syracuse Histogram 200 bit", nbit: 200),
     ]
 
     var body: some View {
@@ -22,28 +20,22 @@ struct ContentView: View {
                     NavigationLink(destination: BitStringView()) {
                         Text(item.title)
                     }
-                } else if item.title.starts(with: "Collatz Chains") {
+                } else if item.title.starts(with: "Syracuse Chains") {
                     let nchain = item.nchain!
                     NavigationLink(destination: ChainView(nchain: nchain)) {
                         Text(item.title)
                     }
-                } else if item.title.starts(with: "Collatz Chains") {
+                } else if item.title.starts(with: "Syracuse Chain Stats") {
                     let nchain = item.nchain!
-                    NavigationLink(destination: ChainView(nchain: nchain)) {
+                    NavigationLink(destination: ChainStatsView(nchain: nchain)) {
                         Text(item.title)
                     }
-                } else if item.title.starts(with: "Collatz Graph") {
+                } else if item.title.starts(with: "Syracuse Graph") {
                     let nchain = 1 << item.nbit!
-                    NavigationLink(destination: CollatzGraphView(nchain: nchain)) {
+                    NavigationLink(destination: SyracuseGraphView(nchain: nchain)) {
                         Text(item.title)
                     }
-                } else if item.title.starts(with: "Collatz Index") {
-                    let nchain = 1 << item.nbit!
-                    let index = item.index!
-                    NavigationLink(destination: CollatzIndexView(nchain: nchain, index: index)) {
-                        Text(item.title)
-                    }
-                } else if item.title.starts(with: "Collatz Histogram") {
+                } else if item.title.starts(with: "Syracuse Histogram") {
                     let nbit = item.nbit!
                     NavigationLink(destination: HistogramView(nbit: nbit)) {
                         Text(item.title)

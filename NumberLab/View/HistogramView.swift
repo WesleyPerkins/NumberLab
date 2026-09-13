@@ -75,7 +75,7 @@ struct HistogramView: View {
                         // X-axis title (centered)
                         HStack {
                             Spacer()
-                            Text("Collatz Chain Length")
+                            Text("Syracuse Chain Length")
                                 .font(.system(.body, design: .default).bold())
                                 .foregroundColor(.primary)
                             Spacer()
@@ -93,11 +93,11 @@ struct HistogramView: View {
     
     private func generateHistogram() {
         DispatchQueue.global(qos: .userInitiated).async {
-            let profiler = TimeProfiler(name: "Collatz Histogram Generation")
+            let profiler = TimeProfiler(name: "Syracuse Histogram Generation")
             profiler.start(state: "Initialization")
             
             profiler.start(state: "Computing Histogram")
-            let result = Odd.collatzProbability(ntrial: 10000, nbit: nbit, nbin: 32)
+            let result = Odd.syracuseProbability(ntrial: 10000, nbit: nbit, nbin: 32)
             
             profiler.start(state: "Finalization")
             profiler.finish()

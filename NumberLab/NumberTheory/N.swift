@@ -42,6 +42,17 @@ public class NBit: Hashable, Comparable, CustomStringConvertible {
         assert(isValid())
     }
 
+    // constructs the value 2^exponent
+    public convenience init(powerOfTwo exponent: Int) throws {
+        if exponent < 1 { throw NumberError.notNaturalNumber }
+        let bitChain = BitChain(value: false)      // bit 0 (LSB)
+        for _ in 1..<exponent {
+            bitChain.append(value: false)          // bits 1 ..< exponent
+        }
+        bitChain.append(value: true)               // bit `exponent` (MSB) — the set bit
+        try self.init(bitChain: bitChain)
+    }
+
     public var description: String {
         return "\(asInt())"
     }

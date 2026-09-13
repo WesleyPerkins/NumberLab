@@ -35,9 +35,9 @@ public class OddLimb: NLimb {
 
     override func copy() -> OddLimb { try! OddLimb(limbChain: g.copy()) }
 
-    // Apply Collatz in-place: compute (3n+1)/2^k where k = v₂(3n+1).
+    // Apply Syracuse in-place: compute (3n+1)/2^k where k = v₂(3n+1).
     // 3n+1 = n + 2n + 1, computed limb-by-limb with initial carry = 1.
-    public func collatz() -> Int {
+    public func syracuse() -> Int {
         // Pass 1: compute 3n+1 in-place.
         var carry: UInt64 = 1    // the +1
         var shiftCarry: UInt64 = 0
@@ -76,46 +76,33 @@ public class OddLimb: NLimb {
         return twopow
     }
 
-//    public func collatzed() -> OddLimb {
-//        let result = copy()
-//        result.collatz()
-//        return result
-//    }
-    public func collatzed() -> (OddLimb, Int) {
+    public func syracused() -> (OddLimb, Int) {
         let next = copy()
-        let twopow = next.collatz()
+        let twopow = next.syracuse()
         return (next, twopow)
     }
 
-    public func collatzChain() -> ([OddLimb], [Int]) {
+    public func syracuseChain() -> ([OddLimb], [Int]) {
         if self.isOne() { return ([self], []) }
         var next = self
         var twopow: Int
         var oList: [OddLimb] = [next]
         var twopowList: [Int] = []
         while !next.isOne() {
-            (next, twopow) = next.collatzed()
+            (next, twopow) = next.syracused()
             oList.append(next)
             twopowList.append(twopow)
         }
-//        oList.append(next)
         return (oList, twopowList)
-
-//        var result: [OddLimb] = [self]
-//        while result.last! != OddLimb.one {
-//            result.append(result.last!.collatzed())
-//        }
-//        return result
     }
 
-
-    public static func collatzProbability(ntrial: Int, nbit: Int, nbin: Int) -> HistogramModel {
+    public static func syracuseProbability(ntrial: Int, nbit: Int, nbin: Int) -> HistogramModel {
         var counts: [Int] = []
         for _ in 0..<ntrial {
             let s = try! OddLimb(nbit: nbit)
             var count = 0
             while s != OddLimb.one {
-                _ = s.collatz()
+                _ = s.syracuse()
                 count += 1
             }
             counts.append(count)
